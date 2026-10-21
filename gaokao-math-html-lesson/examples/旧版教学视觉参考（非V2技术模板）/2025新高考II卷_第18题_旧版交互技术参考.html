@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071320">
+<title>2025 云南高考数学 · 第 18 题｜函数与导数交互演示</title>
+<style>
+:root{--bg:#071320;--panel:#102235;--panel2:#0b1b2a;--edge:#264057;--text:#eaf4ff;--muted:#94aec2;--cyan:#56e0db;--lime:#87e0af;--amber:#f5be70;--purple:#baacff;--red:#fb8892;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(ellipse at 16% -9%,#17415a 0%,transparent 42%),radial-gradient(ellipse at 94% 8%,#211d49 0%,transparent 36%),var(--bg);font-family:Inter,"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;font-size:14px;line-height:1.65}
+button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}a{color:var(--cyan)}.shell{max-width:1540px;padding:30px 28px 54px;margin:auto}.header{display:flex;align-items:flex-start;justify-content:space-between;gap:22px;margin-bottom:22px}.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:2.3px;font-weight:800;margin-bottom:10px}.header h1{font-size:clamp(25px,3.1vw,43px);line-height:1.22;letter-spacing:-.9px;margin:0 0 11px;font-weight:780}.header p{margin:0;color:var(--muted);max-width:750px;font-size:14px}.headActions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end;padding-top:6px}.btn{border:1px solid var(--edge);border-radius:11px;background:#172c40;color:var(--text);min-height:40px;padding:9px 16px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:13px;transition:background .16s,transform .16s}.btn:hover{background:#25445d}.btn:active{transform:scale(.98)}.btn.primary{border-color:#55cfc9;background:linear-gradient(125deg,#21a7aa,#2d87ba);color:#fff;font-weight:760}.btn.primary:hover{background:linear-gradient(125deg,#30b6b6,#319ad0)}.btn.ghost{background:transparent}.btn.small{padding:7px 11px;min-height:33px;font-size:12px}.panel{background:linear-gradient(157deg,rgba(18,41,60,.98),rgba(11,28,44,.98));border:1px solid var(--edge);border-radius:var(--radius);box-shadow:0 14px 52px rgba(0,0,0,.13)}.question{padding:18px 22px;display:flex;align-items:center;gap:18px;margin-bottom:15px}.questionBadge{flex-shrink:0;border:1px solid #3b627c;background:#19354a;color:var(--cyan);padding:7px 12px;border-radius:9px;font-weight:760;white-space:nowrap}.questionContent{flex:1;min-width:0}.formula{font-family:Cambria,"Times New Roman","Noto Serif",serif;letter-spacing:.2px}.questionFormula{font-size:21px;color:#fff;line-height:1.45}.questionText{color:var(--muted);font-size:12px;margin-top:4px}.statRow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}.stat{padding:13px 17px;min-height:98px;position:relative;overflow:hidden}.stat:after{content:"";position:absolute;width:82px;height:82px;border-radius:50%;right:-35px;top:-37px;background:currentColor;opacity:.045}.statLabel{color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.6px}.statValue{font-size:clamp(21px,2.2vw,30px);font-variant-numeric:tabular-nums;font-weight:780;line-height:1.3;margin-top:4px}.statHint{color:var(--muted);font-size:11px}.cyan{color:var(--cyan)}.lime{color:var(--lime)}.amber{color:var(--amber)}.purple{color:var(--purple)}.red{color:var(--red)}.layout{display:grid;grid-template-columns:minmax(0,1.66fr) minmax(330px,.84fr);gap:16px;align-items:start}.left{display:grid;gap:16px;min-width:0}.right{display:grid;gap:16px;min-width:0}.graphCard{overflow:hidden}.cardTop{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:17px 19px 8px}.sectionTitle{font-size:17px;font-weight:760;letter-spacing:-.2px}.subTitle{font-size:11px;color:var(--muted);margin-top:2px}.legend{display:flex;flex-wrap:wrap;gap:11px;align-items:center;color:var(--muted);font-size:11px}.legend b{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:5px;border-radius:2px}.chartWrap{position:relative;padding:0 9px 7px}.chart{display:block;width:100%;height:400px;touch-action:pan-y;cursor:crosshair}.chart.smallChart{height:254px}.hoverBox{position:absolute;z-index:3;pointer-events:none;display:none;padding:9px 12px;border:1px solid #3c617b;border-radius:11px;background:rgba(7,20,32,.96);font-size:11px;color:#d9edfc;box-shadow:0 8px 28px #0008;white-space:nowrap}.viewTabs{display:flex;gap:4px;border:1px solid var(--edge);border-radius:11px;padding:3px;background:#0a1c2d}.viewTabs button{background:none;border:0;border-radius:8px;padding:7px 12px;color:var(--muted);font-size:12px}.viewTabs button.active{background:#23435d;color:var(--text)}.footerLine{padding:1px 18px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:11px;flex-wrap:wrap}.tag{border:1px solid #315268;border-radius:6px;padding:2px 8px;font-size:10px;color:#b9d7e8}.sidePad{padding:20px}.sideHeading{display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:760;font-size:16px;margin-bottom:19px}.mini{color:var(--muted);font-weight:500;font-size:11px}.rangeTitle{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:8px;font-size:12px;color:var(--muted)}.rangeTitle strong{color:var(--text);font-size:20px;font-variant-numeric:tabular-nums}.range{width:100%;height:5px;accent-color:#5adbd5;cursor:pointer}.rangeLabels{display:flex;justify-content:space-between;font-size:10px;color:#7e9aaf;margin-top:6px}.presets{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.preset{border:1px solid #305067;color:#b3cfe1;background:#112b3d;padding:6px 10px;border-radius:8px;font-size:11px}.preset:hover,.preset.active{border-color:var(--cyan);color:var(--cyan)}.paramExplain{font-size:11px;color:var(--muted);margin:12px 0 0}.sideDivider{height:1px;background:var(--edge);margin:22px 0}.endpointValues{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}.endpoint{padding:11px;border-radius:10px;border:1px solid #2a4a60;background:#0b2132}.endpoint .label{font-size:11px;color:var(--muted)}.endpoint .value{font-size:18px;font-variant-numeric:tabular-nums;font-weight:700;line-height:1.4}.stepNav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:15px}.stepPills{display:flex;gap:6px;align-items:center}.pill{width:26px;height:26px;padding:0;display:grid;place-items:center;border-radius:9px;border:1px solid #33536d;color:#a7bfd3;background:#12283c;font-size:11px}.pill.active{border-color:#4ee0d9;background:#23646c;color:#fff}.pill.done{color:var(--cyan);border-color:#247b7b}.stepTitle{font-size:21px;font-weight:780;line-height:1.4;letter-spacing:-.5px;margin:0 0 9px}.stepDesc{color:#bed1e1;font-size:12px;line-height:1.9;min-height:64px;margin-bottom:14px}.mathPanel{background:#071c2b;border:1px solid #2b4c63;padding:15px 14px;border-radius:12px;min-height:125px;overflow-x:auto}.mathLine{font-size:16px;line-height:2;color:#edfafc;white-space:normal;overflow-wrap:anywhere}.mathLine+.mathLine{margin-top:5px}.mathSmall{font-size:12px;color:#9bc9dc;margin-top:9px;line-height:1.8}.highlight{color:var(--cyan);font-weight:750}.highlight2{color:var(--amber);font-weight:750}.checkPoint{color:#a5e5bb;font-size:12px;margin-top:15px;min-height:43px;line-height:1.8}.lessonBtns{display:flex;gap:8px;margin-top:18px}.lessonBtns .btn{flex:1}.resultCard{padding:17px 20px;border-color:#3a7375;background:linear-gradient(130deg,#103947,#172a40)}.resultCard .label{font-size:11px;color:#b5d3d8;letter-spacing:1px;font-weight:750}.resultMath{font-size:29px;font-weight:800;margin:7px 0;color:#bcfff3;letter-spacing:.2px}.resultSmall{font-size:12px;color:#a6c6d1}.details{margin-top:17px;overflow:hidden}.details summary{padding:17px 21px;cursor:pointer;font-weight:730;list-style:none;display:flex;align-items:center;justify-content:space-between}.details summary:after{content:"＋";color:var(--cyan);font-size:21px;font-weight:300}.details[open] summary:after{content:"−"}.detailBody{padding:0 22px 21px;line-height:1.95;color:#bdd2e1;font-size:13px}.proofTitle{font-weight:760;color:var(--text);margin:13px 0 5px}.detailBody p{margin:5px 0 13px}.detailBody .eq{padding:10px 14px;margin:9px 0;background:#081b2b;border-left:3px solid #4badaf;border-radius:4px;font-size:16px;color:#f0fafc;overflow:auto;font-family:Cambria,"Times New Roman",serif}.footer{margin-top:21px;font-size:11px;color:#7e9caf;text-align:center}.footer a{color:#a6deea}.keyHint{font-size:10px;color:#7697ad}.statusDot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--lime);margin-right:7px;box-shadow:0 0 10px #87e0af77}
+@media(max-width:1070px){.layout{grid-template-columns:minmax(0,1fr) 330px}.chart{height:365px}.shell{padding:22px 18px 35px}.stat{padding:12px}}
+@media(max-width:840px){.layout{grid-template-columns:1fr}.right{grid-template-columns:1fr 1fr}.resultCard{grid-column:1/-1}.chart{height:390px}.question{align-items:flex-start}}
+@media(max-width:580px){.shell{padding:16px 11px 30px}.header{display:block}.header h1{font-size:26px}.headActions{justify-content:flex-start;margin-top:17px}.question{display:block;padding:16px}.questionBadge{display:inline-block;margin-bottom:10px}.questionFormula{font-size:18px}.statRow{grid-template-columns:repeat(2,1fr);gap:8px}.stat{min-height:82px}.statValue{font-size:23px}.right{grid-template-columns:1fr}.cardTop{flex-wrap:wrap}.chart{height:322px}.chart.smallChart{height:228px}.legend{gap:8px}.sidePad{padding:17px}.mathLine{font-size:15px}.footerLine{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="header">
+  <div>
+    <div class="eyebrow">GAOKAO VISUAL LAB <span style="color:#7198ae"> / 2025 · 新课标Ⅱ卷</span></div>
+    <h1>第 18 题 <span style="color:#8eafc4;font-weight:430">/</span> 函数与导数的深度探索</h1>
+    <p>让抽象的证明变得可见：拖动参数 <span class="formula">k</span>，观察极大值点、唯一正零点与对称差函数如何同步变化。</p>
+  </div>
+  <div class="headActions">
+    <button class="btn primary" id="playBtn" aria-label="自动播放讲解">▶ 自动演示</button>
+    <button class="btn ghost" id="resetBtn">↺ 重置</button>
+    <button class="btn ghost" id="saveBtn" title="导出主函数图像">↓ 保存图像</button>
+  </div>
+</header>
+<section class="panel question" aria-label="真题题面">
+  <div class="questionBadge">原题 · 17 分</div>
+  <div class="questionContent">
+    <div class="questionFormula formula">f(x) = ln(1+x) − x + <span style="white-space:nowrap">½x²</span> − kx³，&nbsp; 0 &lt; k &lt; ⅓</div>
+    <div class="questionText">（1）证明在 (0,+∞) 存在唯一极值点和唯一零点。 （2-i）证明 g(t)=f(x₁+t)−f(x₁−t) 在 (0,x₁) 单调递减。 （2-ii）比较 2x₁ 与 x₂ 的大小并证明。</div>
+  </div>
+</section>
+<section class="statRow" aria-label="实时计算数据">
+  <div class="panel stat"><div class="statLabel">参数 k</div><div class="statValue cyan" id="statK">0.120</div><div class="statHint">0 &lt; k &lt; ⅓</div></div>
+  <div class="panel stat"><div class="statLabel">唯一极大值点 x₁</div><div class="statValue lime" id="statX1">—</div><div class="statHint">x₁ = 1/(3k) − 1</div></div>
+  <div class="panel stat"><div class="statLabel">唯一正零点 x₂</div><div class="statValue amber" id="statX2">—</div><div class="statHint">f(x₂) = 0</div></div>
+  <div class="panel stat"><div class="statLabel">临界比较点 2x₁</div><div class="statValue purple" id="stat2X1">—</div><div class="statHint">始终有 x₁ &lt; x₂ &lt; 2x₁</div></div>
+</section>
+<div class="layout">
+  <div class="left">
+    <section class="panel graphCard" aria-label="函数主图">
+      <div class="cardTop">
+        <div><div class="sectionTitle">主函数图像 <span class="formula" style="color:var(--cyan)">f(x)</span></div><div class="subTitle">鼠标在图像上移动，可读取函数值和导数值</div></div>
+        <div class="legend"><span><b style="background:var(--lime)"></b>递增</span><span><b style="background:var(--amber)"></b>递减</span><span><b style="background:var(--purple)"></b>2x₁</span></div>
+      </div>
+      <div class="chartWrap" id="mainWrap"><canvas class="chart" id="mainCanvas" aria-label="函数 f(x) 变化图像"></canvas><div class="hoverBox" id="hoverBox"></div></div>
+      <div class="footerLine"><span><span class="statusDot"></span>所有曲线与数据随参数实时重算</span><span class="tag" id="graphTag">重点：极值与正零点</span></div>
+    </section>
+    <section class="panel graphCard" aria-label="辅助函数与导数图像">
+      <div class="cardTop">
+        <div><div class="sectionTitle" id="secondaryTitle">对称差函数 g(t)</div><div class="subTitle" id="secondarySubtitle">两侧函数值之差，揭示 2x₁ 与 x₂ 的顺序</div></div>
+        <div class="viewTabs"><button id="tabG" class="active" aria-pressed="true">g(t)</button><button id="tabD" aria-pressed="false">f′(x)</button></div>
+      </div>
+      <div class="chartWrap"><canvas class="chart smallChart" id="secondaryCanvas" aria-label="辅助图像"></canvas></div>
+      <div class="footerLine"><span id="secondaryNote">g(0)=0，t&gt;0 时 g(t)&lt;0</span><span class="tag" id="secondaryTag">g′(t) &lt; 0</span></div>
+    </section>
+  </div>
+  <aside class="right">
+    <section class="panel sidePad" aria-label="调参面板">
+      <div class="sideHeading">实验控制台 <span class="mini">INTERACTIVE</span></div>
+      <div class="rangeTitle"><span>变化参数 <strong class="formula">k</strong></span><strong id="kDisplay">0.120</strong></div>
+      <input type="range" class="range" id="kSlider" min="0.040" max="0.320" step="0.001" value="0.120" aria-label="参数 k，范围 0.04 至 0.32">
+      <div class="rangeLabels"><span>0.040</span><span>区间 0 &lt; k &lt; ⅓</span><span>0.320</span></div>
+      <div class="presets"><button class="preset" data-k="0.060">k = 0.06</button><button class="preset active" data-k="0.120">k = 0.12</button><button class="preset" data-k="0.220">k = 0.22</button><button class="preset" data-k="0.300">k = 0.30</button></div>
+      <p class="paramExplain">这里选取 (0,⅓) 中便于观察的参数范围；题目的证明对整个开区间成立。</p>
+      <div class="sideDivider"></div>
+      <div class="rangeTitle"><span>对称探针 <strong class="formula">t</strong></span><strong id="tDisplay">—</strong></div>
+      <input type="range" class="range" id="tSlider" min="0" max="1000" step="1" value="550" aria-label="对称差函数探针 t，从零到 x1">
+      <div class="rangeLabels"><span>t=0</span><span>中心在 x₁</span><span>t=x₁</span></div>
+      <div class="endpointValues">
+        <div class="endpoint"><div class="label">f(x₁ − t) <span style="color:var(--lime)">●</span></div><div class="value lime" id="leftVal">—</div></div>
+        <div class="endpoint"><div class="label">f(x₁ + t) <span style="color:var(--amber)">●</span></div><div class="value amber" id="rightVal">—</div></div>
+      </div>
+      <div class="endpointValues" style="margin-top:8px"><div class="endpoint" style="grid-column:1/-1"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><div class="label">g(t) = 右侧 − 左侧</div><strong class="red" id="gValue" style="font-size:18px;font-variant-numeric:tabular-nums">—</strong></div></div></div>
+    </section>
+    <section class="panel sidePad" aria-label="引导式证明">
+      <div class="sideHeading">引导式证明 <span class="mini" id="stepProgress">1 / 5</span></div>
+      <div class="stepNav"><div class="stepPills" id="stepPills" aria-label="讲解步骤">
+        <button class="pill active" data-step="0">1</button><button class="pill" data-step="1">2</button><button class="pill" data-step="2">3</button><button class="pill" data-step="3">4</button><button class="pill" data-step="4">5</button>
+      </div><span class="keyHint">← → 切换</span></div>
+      <h2 class="stepTitle" id="stepTitle">拆解题目</h2>
+      <div class="stepDesc" id="stepDesc">先观察 f(x) 图像。改变 k，看看峰值和唯一正零点如何移动。</div>
+      <div class="mathPanel" id="mathPanel" aria-live="polite"></div>
+      <div class="checkPoint" id="checkPoint"></div>
+      <div class="lessonBtns"><button class="btn" id="prevBtn">← 上一步</button><button class="btn primary" id="nextBtn">下一步 →</button></div>
+    </section>
+    <section class="panel resultCard" aria-label="最终结论"><div class="label">最终证明结论</div><div class="resultMath formula">x₁ &lt; x₂ &lt; 2x₁</div><div class="resultSmall">特别注意：本题是 <b>x₂ &lt; 2x₁</b>，通过比较 f(2x₁) 与 0 得到。</div></section>
+  </aside>
+</div>
+<details class="panel details" id="fullProof">
+ <summary>展开完整规范证明（含代数推导）</summary>
+ <div class="detailBody">
+  <div class="proofTitle">（1）证明唯一极值点与唯一正零点</div>
+  <p>由 <span class="formula">f(x)=ln(1+x)−x+½x²−kx³</span> 得：</p>
+  <div class="eq">f′(x) = 1/(1+x) − 1 + x − 3kx² = x²[1−3k(1+x)]/(1+x)</div>
+  <p>令 <span class="formula">x₁=1/(3k)−1</span>，因 <span class="formula">0&lt;k&lt;⅓</span>，故 <span class="formula">x₁&gt;0</span>。在 <span class="formula">x&gt;0</span> 时，<span class="formula">f′(x)</span> 与 <span class="formula">x₁−x</span> 同号。于是 <span class="formula">f</span> 在 <span class="formula">(0,x₁)</span> 严格递增，在 <span class="formula">(x₁,+∞)</span> 严格递减，因此有且只有一个极值点 <span class="formula">x₁</span>，为极大值点。</p>
+  <p>又 <span class="formula">f(0)=0</span>，由严格递增性得 <span class="formula">f(x₁)&gt;0</span>；且由于负的三次项占主导，<span class="formula">lim₍ₓ→+∞₎ f(x)=−∞</span>。结合连续性及 <span class="formula">(x₁,+∞)</span> 上严格递减，存在且仅存在一个 <span class="formula">x₂∈(x₁,+∞)</span>，满足 <span class="formula">f(x₂)=0</span>。注意 <span class="formula">x=0</span> 不属于题目所要求的 <span class="formula">(0,+∞)</span>。</p>
+  <div class="proofTitle">（2-i）证明 g(t) 在 (0,x₁) 严格递减</div>
+  <p>设 <span class="formula">g(t)=f(x₁+t)−f(x₁−t)</span>。求导：</p>
+  <div class="eq">g′(t) = f′(x₁+t) + f′(x₁−t)</div>
+  <div class="eq">g′(t) = [6kt²(t²−x₁²−2x₁)] / [(1+x₁)²−t²]</div>
+  <p>由于 <span class="formula">0&lt;t&lt;x₁</span>，有 <span class="formula">t²−x₁²−2x₁&lt;0</span> 且 <span class="formula">(1+x₁)²−t²&gt;0</span>，再加上 <span class="formula">6kt²&gt;0</span>，故 <span class="formula">g′(t)&lt;0</span>，即 <span class="formula">g</span> 严格递减。</p>
+  <div class="proofTitle">（2-ii）比较 2x₁ 与 x₂</div>
+  <p>由连续性，<span class="formula">g(x₁)&lt;g(0)=0</span>，因此：</p>
+  <div class="eq">f(2x₁)−f(0) &lt; f(x₁)−f(x₁) = 0</div>
+  <p>因为 <span class="formula">f(0)=0</span>，所以 <span class="formula">f(2x₁)&lt;0</span>。同时 <span class="formula">f(x₁)&gt;0</span>，而 <span class="formula">f</span> 在 <span class="formula">(x₁,+∞)</span> 严格递减，其唯一正零点为 <span class="formula">x₂</span>，故 <b style="color:#9ff6da" class="formula">x₁&lt;x₂&lt;2x₁</b>。</p>
+ </div>
+</details>
+<footer class="footer">基于 2025 年高考数学新课标Ⅱ卷第 18 题 · 为教学演示制作 · 纯 HTML + Canvas，无需联网 · <a href="https://www.jhgk.cn/upload/file/20250611/1749606902734089600.pdf" target="_blank" rel="noopener">参考解析 PDF ↗</a></footer>
+</div>
+<script>
+'use strict';
+const $ = s=>document.querySelector(s);
+const state={k:.12,step:0,mode:'g',ratio:.55,hoverX:null,playing:false,playTimer:null,mainT:null,lowT:null};
+const mainCanvas=$('#mainCanvas'),lowCanvas=$('#secondaryCanvas');
+const cyan='#56e0db',lime='#87e0af',amber='#f5be70',purple='#baacff',red='#fb8892',muted='#829eaf';
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const f=x=>Math.log1p(x)-x+x*x/2-state.k*x*x*x;
+const df=x=>x*x*(1-3*state.k*(1+x))/(1+x);
+const x1=()=>1/(3*state.k)-1;
+const g=t=>f(x1()+t)-f(x1()-t);
+const gp=t=>{let a=x1();return 6*state.k*t*t*(t*t-a*a-2*a)/((1+a)**2-t*t)};
+function root(){let a=x1(),left=a,right=2*a;for(let i=0;i<84;i++){let m=(left+right)/2;if(f(m)>0)left=m;else right=m}return (left+right)/2}
+function fmt(v,dec=3){if(!Number.isFinite(v))return '—'; if(Math.abs(v)<1e-12)return '0';if(Math.abs(v)>=100)return v.toFixed(2);if(Math.abs(v)<.0001)return v.toExponential(2);return v.toFixed(dec)}
+function smartStep(rough){if(!(rough>0))return 1;let magnitude=Math.pow(10,Math.floor(Math.log10(rough)));let r=rough/magnitude;return (r<=1?1:r<=2?2:r<=2.5?2.5:r<=5?5:10)*magnitude}
+function ticks(min,max,n=5){const unit=smartStep((max-min)/n);let a=Math.ceil(min/unit)*unit, arr=[];for(let i=0;i<100;i++){let v=a+i*unit;if(v>max+unit*1e-5)break;arr.push(v)}return arr}
+function nice(v){if(Math.abs(v)<1e-9)return '0';let z=Math.abs(v);return z>=20?v.toFixed(0):z>=1?v.toFixed(1).replace(/\.0$/,''):z>=.05?v.toFixed(2).replace(/0+$/,'').replace(/\.$/,''):v.toPrecision(2)}
+function setupCanvas(canvas){let rect=canvas.getBoundingClientRect(),w=Math.max(10,rect.width),h=Math.max(10,rect.height),dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);let ctx=canvas.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);return{ctx,w,h}}
+function plotBase(canvas,{xmin,xmax,ymin,ymax,xlabel='x',ylabel='y'}){
+ const {ctx,w,h}=setupCanvas(canvas);let p={L:w<400?53:62,R:19,T:24,B:39};let cw=w-p.L-p.R,ch=h-p.T-p.B;
+ const X=x=>p.L+(x-xmin)/(xmax-xmin)*cw,Y=y=>p.T+(ymax-y)/(ymax-ymin)*ch;
+ ctx.clearRect(0,0,w,h);ctx.fillStyle='rgba(10,29,44,.3)';ctx.fillRect(p.L,p.T,cw,ch);
+ ctx.save();ctx.strokeStyle='#274155';ctx.lineWidth=.8;ctx.setLineDash([3,5]);ctx.fillStyle='#829cac';ctx.font='11px Inter, system-ui, sans-serif';
+ for(let x of ticks(xmin,xmax,6)){let px=X(x);ctx.beginPath();ctx.moveTo(px,p.T);ctx.lineTo(px,h-p.B);ctx.stroke();ctx.textAlign='center';ctx.fillText(nice(x),px,h-p.B+19)}
+ for(let y of ticks(ymin,ymax,5)){let py=Y(y);ctx.beginPath();ctx.moveTo(p.L,py);ctx.lineTo(w-p.R,py);ctx.stroke();ctx.textAlign='right';ctx.fillText(nice(y),p.L-9,py+4)}ctx.restore();
+ ctx.strokeStyle='#5d778d';ctx.lineWidth=1.15;ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(p.L,p.T);ctx.lineTo(p.L,h-p.B);ctx.lineTo(w-p.R,h-p.B);ctx.stroke();
+ if(ymin<0&&ymax>0){ctx.strokeStyle='#7996aa';ctx.lineWidth=1.3;ctx.beginPath();ctx.moveTo(p.L,Y(0));ctx.lineTo(w-p.R,Y(0));ctx.stroke()}
+ ctx.fillStyle='#9bb5c5';ctx.font='italic 13px Cambria,serif';ctx.textAlign='right';ctx.fillText(xlabel,w-p.R-1,h-8);ctx.textAlign='left';ctx.fillText(ylabel,p.L+7,p.T-7);
+ ctx.save();ctx.beginPath();ctx.rect(p.L,p.T,cw,ch);ctx.clip();
+ return{ctx,w,h,p,X,Y,xmin,xmax,ymin,ymax,end:()=>ctx.restore()}
+}
+function areaToZero(C,fun,a,b,color){const {ctx,X,Y}=C;if(b<=a)return;ctx.beginPath();ctx.moveTo(X(a),Y(0));for(let i=0;i<=165;i++){let x=a+(b-a)*i/165;ctx.lineTo(X(x),Y(fun(x)))}ctx.lineTo(X(b),Y(0));ctx.closePath();ctx.fillStyle=color;ctx.fill()}
+function curve(C,fun,a,b,color,width=2.6){const{ctx,X,Y}=C;ctx.beginPath();for(let i=0;i<=350;i++){let x=a+(b-a)*i/350;if(i===0)ctx.moveTo(X(x),Y(fun(x)));else ctx.lineTo(X(x),Y(fun(x)))}ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineJoin='round';ctx.lineCap='round';ctx.stroke()}
+function dashed(C,x,color){const{ctx,X,p,h}=C;ctx.save();ctx.strokeStyle=color;ctx.lineWidth=1.15;ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(X(x),p.T);ctx.lineTo(X(x),h-p.B);ctx.stroke();ctx.restore()}
+function dot(C,x,y,color,r=5,open=false){const{ctx,X,Y}=C;ctx.beginPath();ctx.arc(X(x),Y(y),r,0,Math.PI*2);ctx.fillStyle=open?'#0a1d2c':color;ctx.fill();ctx.strokeStyle=color;ctx.lineWidth=2;ctx.stroke()}
+function glowLabel(C,x,y,title,text,color,dx=8,dy=-9){const{ctx,X,Y}=C;ctx.save();ctx.font='700 11px Inter, system-ui,sans-serif';ctx.fillStyle=color;ctx.textAlign='left';const px=clamp(X(x)+dx,C.p.L+4,C.w-93),py=clamp(Y(y)+dy,C.p.T+14,C.h-C.p.B-17);ctx.fillText(title,px,py);if(text){ctx.fillStyle='#9cb8ca';ctx.font='10px Inter,system-ui,sans-serif';ctx.fillText(text,px,py+14)}ctx.restore()}
+function drawMain(){
+ let a=x1(),b=root(),t=a*state.ratio,upper=2.17*a,peak=f(a),bottom=f(upper),top=Math.max(peak*1.65,0.000001),min=Math.min(bottom*1.13,-peak*.9);let C=plotBase(mainCanvas,{xmin:0,xmax:upper,ymin:min,ymax:top,xlabel:'x',ylabel:'f(x)'});let {ctx,X,Y,p}=C;
+ areaToZero(C,f,0,b,'rgba(86,224,219,.09)');areaToZero(C,f,b,upper,'rgba(251,136,146,.065)');
+ if(state.step>=1){ctx.fillStyle='rgba(135,224,175,.035)';ctx.fillRect(X(0),p.T,X(a)-X(0),C.h-p.B-p.T);ctx.fillStyle='rgba(245,190,112,.025)';ctx.fillRect(X(a),p.T,X(upper)-X(a),C.h-p.B-p.T)}
+ if(state.step>=4){ctx.fillStyle='rgba(186,172,255,.085)';ctx.fillRect(X(b),p.T,X(2*a)-X(b),C.h-p.B-p.T)}
+ curve(C,f,0,a,lime,3);curve(C,f,a,b,amber,3);curve(C,f,b,upper,red,3);
+ if(state.step>=1){dashed(C,a,lime);dot(C,a,f(a),lime,5.7);glowLabel(C,a,f(a),'x₁  极大值',fmt(a),lime,9,-16)}
+ if(state.step>=2){dashed(C,b,amber);dot(C,b,0,amber,5.7);glowLabel(C,b,0,'x₂  正零点',fmt(b),amber,-27,-17)}
+ if(state.step>=3){let xL=a-t,xR=a+t,yL=f(xL),yR=f(xR);dashed(C,xL,'rgba(135,224,175,.38)');dashed(C,xR,'rgba(245,190,112,.38)');dot(C,xL,yL,lime,5);dot(C,xR,yR,amber,5);if(state.step===3){glowLabel(C,xL,yL,'左点',fmt(xL),lime,-36,-16);glowLabel(C,xR,yR,'右点',fmt(xR),amber,7,-16)}}
+ if(state.step>=4){dashed(C,2*a,purple);dot(C,2*a,f(2*a),purple,5);glowLabel(C,2*a,f(2*a),'2x₁',fmt(2*a),purple,-40,-12)}
+ if(state.hoverX!==null){let x=clamp(state.hoverX,0,upper),y=f(x);ctx.save();ctx.setLineDash([3,4]);ctx.strokeStyle='#9fdfea77';ctx.beginPath();ctx.moveTo(X(x),p.T);ctx.lineTo(X(x),C.h-p.B);ctx.stroke();ctx.restore();dot(C,x,y,cyan,4)}
+ C.end();state.mainT=C;
+}
+function drawSecondary(){let a=x1(),t=state.ratio*a,mode=state.mode;if(mode==='g'){
+ let low=g(a),ymin=low*1.16,ymax=Math.abs(low)*.14;let C=plotBase(lowCanvas,{xmin:0,xmax:a,ymin,ymax,xlabel:'t',ylabel:'g(t)'});
+ areaToZero(C,g,0,a,'rgba(251,136,146,.09)');curve(C,g,0,a,red,3);dot(C,0,0,cyan,4);dot(C,a,g(a),purple,4);dashed(C,t,'rgba(186,172,255,.55)');dot(C,t,g(t),cyan,6);glowLabel(C,t,g(t),'g(t)',fmt(g(t)),cyan,7,-13);C.end();state.lowT=C;
+ }else{
+ let xmax=2.15*a,max=df(a*.52),min=df(xmax),ymax=Math.max(max*1.35,.00000001),ymin=Math.min(min*1.13,-max*.25);let C=plotBase(lowCanvas,{xmin:0,xmax,ymin,ymax,xlabel:'x',ylabel:'f′(x)'});
+ areaToZero(C,df,0,a,'rgba(135,224,175,.09)');areaToZero(C,df,a,xmax,'rgba(245,190,112,.055)');curve(C,df,0,a,lime,3);curve(C,df,a,xmax,amber,3);dashed(C,a,lime);dot(C,a,0,lime,5);glowLabel(C,a,0,'x₁',fmt(a),lime,8,-12);C.end();state.lowT=C;
+ }}
+function setStep(step){state.step=clamp(step,0,4);if(state.step===1)state.mode='derivative';if(state.step===3)state.mode='g';if(state.step===4){state.mode='g';state.ratio=1;$('#tSlider').value='1000'}renderAll()}
+function setMode(mode){state.mode=mode;renderAll()}
+function setK(k){state.k=clamp(k,.04,.32);$('#kSlider').value=state.k.toFixed(3);renderAll()}
+const steps=[
+ {title:'从题目出发',desc:'参数 k 可以改变函数曲线的形状，但不会改变本题的结构性结论。先观察曲线在 x>0 的增减变化。',html:'<div class="mathLine formula">f(x)=ln(1+x)−x+½x²−kx³</div><div class="mathLine">目标：寻找 <span class="highlight">极大值点 x₁</span> 和 <span class="highlight2">唯一正零点 x₂</span>。</div><div class="mathSmall">提示：f(0)=0，但 0 不在题设区间 (0,+∞) 内。</div>',check:'观察：曲线先升后降，在正半轴只与 x 轴再相交一次。'},
+ {title:'导数决定单调性',desc:'对 f(x) 求导并因式分解。利用 0<k<⅓，令 x₁=1/(3k)−1>0，导数符号就变得一目了然。',html:'<div class="mathLine formula">f′(x)=<span class="highlight">3kx²(x₁−x)/(1+x)</span></div><div class="mathLine formula">0&lt;x&lt;x₁：f′(x)&gt;0</div><div class="mathLine formula">x&gt;x₁：f′(x)&lt;0</div><div class="mathSmall">下方已经切换到 f′(x) 图像：绿段为正，橙段为负。</div>',check:'✓ f 在 (0,x₁) 严格递增、在 (x₁,+∞) 严格递减，因此 x₁ 是唯一极大值点。'},
+ {title:'为什么零点唯一？',desc:'由 f(0)=0 与前一阶段的严格递增性，f(x₁)>0。随着 x→+∞，−kx³ 占主导，f(x)→−∞，因此递减区间必穿过 x 轴一次且仅一次。',html:'<div class="mathLine formula">f(0)=0， <span class="highlight">f(x₁)&gt;0</span></div><div class="mathLine formula">lim<sub>x→+∞</sub>f(x)=−∞</div><div class="mathLine formula">∃! x₂∈(x₁,+∞)：<span class="highlight2">f(x₂)=0</span></div>',check:'✓ 极大值点与正零点均唯一；并且 x₂ > x₁。'},
+ {title:'构造对称差函数',desc:'以 x₁ 为中心，在左右两侧各取相距 t 的点。右侧函数值减去左侧函数值，就得到 g(t)。拖动上方的 t 滑块可以观察两个点。',html:'<div class="mathLine formula">g(t)=f(x₁+t)−f(x₁−t)</div><div class="mathLine formula">g′(t)=<span class="highlight">6kt²(t²−x₁²−2x₁)</span> / [(1+x₁)²−t²]</div><div class="mathSmall">0&lt;t&lt;x₁ 时：分子 &lt;0、分母 &gt;0，故 <span class="highlight">g′(t)&lt;0</span>。</div>',check:'✓ g(t) 在 (0,x₁) 上严格递减，因此 g(t) < g(0)=0。'},
+ {title:'最后一步：比较位置',desc:'将 t 从 0 推至 x₁，由连续性与严格递减性得到 g(x₁)<g(0)=0。于是 f(2x₁)<0，而 x₂ 是下降支上的唯一零点。',html:'<div class="mathLine formula">g(x₁)&lt;g(0)=0</div><div class="mathLine formula">⇒ f(2x₁)−f(0)&lt;0</div><div class="mathLine formula">⇒ <span class="highlight2">f(2x₁)&lt;0=f(x₂)</span></div><div class="mathLine formula">⇒ <span class="highlight">x₁ &lt; x₂ &lt; 2x₁</span></div>',check:'✓ 已完成第（1）、（2-i）、（2-ii）全部证明。'}
+];
+function updateText(){const a=x1(),b=root(),k=state.k,t=state.ratio*a,info=steps[state.step];$('#statK').textContent=fmt(k);$('#statX1').textContent=fmt(a);$('#statX2').textContent=fmt(b);$('#stat2X1').textContent=fmt(2*a);$('#kDisplay').textContent=fmt(k);$('#tDisplay').textContent=fmt(t);$('#leftVal').textContent=fmt(f(a-t),5);$('#rightVal').textContent=fmt(f(a+t),5);$('#gValue').textContent=fmt(g(t),5);$('#stepTitle').textContent=info.title;$('#stepDesc').textContent=info.desc;$('#mathPanel').innerHTML=info.html;$('#checkPoint').textContent=info.check;$('#stepProgress').textContent=(state.step+1)+' / 5';document.querySelectorAll('.pill').forEach(el=>{let i=Number(el.dataset.step);el.classList.toggle('active',i===state.step);el.classList.toggle('done',i<state.step);el.setAttribute('aria-current',i===state.step?'step':'false')});$('#prevBtn').disabled=state.step===0;$('#nextBtn').disabled=state.step===4;$('#nextBtn').textContent=state.step===4?'演示完成 ✓':'下一步 →';document.querySelectorAll('.preset').forEach(el=>el.classList.toggle('active',Math.abs(Number(el.dataset.k)-k)<.0004));$('#tabG').classList.toggle('active',state.mode==='g');$('#tabD').classList.toggle('active',state.mode==='derivative');$('#tabG').setAttribute('aria-pressed',state.mode==='g');$('#tabD').setAttribute('aria-pressed',state.mode==='derivative');$('#secondaryTitle').textContent=state.mode==='g'?'对称差函数 g(t)':'导函数 f′(x)';$('#secondarySubtitle').textContent=state.mode==='g'?'两侧函数值之差，揭示 2x₁ 与 x₂ 的顺序':'观察导数符号，证明唯一极大值点';$('#secondaryNote').textContent=state.mode==='g'?'g(0)=0，0<t≤x₁ 时 g(t)<0':'0<x<x₁ 导数为正；x>x₁ 导数为负';$('#secondaryTag').textContent=state.mode==='g'?'g′(t) < 0':'f′(x₁) = 0';$('#graphTag').textContent=state.step===4?'结论：x₁ < x₂ < 2x₁':state.step>=3?'对称取点：x₁ ± t':'重点：极值与正零点';}
+function renderAll(){updateText();drawMain();drawSecondary()}
+function stopPlay(){if(state.playTimer)clearInterval(state.playTimer);state.playTimer=null;state.playing=false;$('#playBtn').textContent='▶ 自动演示'}
+function startPlay(){if(state.playing){stopPlay();return}state.playing=true;$('#playBtn').textContent='Ⅱ 暂停演示';if(state.step>=4){state.ratio=.55;$('#tSlider').value=550;setStep(0)}else renderAll();state.playTimer=setInterval(()=>{if(state.step>=4){stopPlay();return}setStep(state.step+1)},3100)}
+$('#playBtn').addEventListener('click',startPlay);$('#prevBtn').addEventListener('click',()=>{stopPlay();setStep(state.step-1)});$('#nextBtn').addEventListener('click',()=>{stopPlay();setStep(state.step+1)});document.querySelectorAll('.pill').forEach(el=>el.addEventListener('click',()=>{stopPlay();setStep(Number(el.dataset.step))}));$('#kSlider').addEventListener('input',e=>setK(Number(e.target.value)));document.querySelectorAll('.preset').forEach(el=>el.addEventListener('click',()=>setK(Number(el.dataset.k))));$('#tSlider').addEventListener('input',e=>{state.ratio=Number(e.target.value)/1000;renderAll()});$('#tabG').addEventListener('click',()=>setMode('g'));$('#tabD').addEventListener('click',()=>setMode('derivative'));
+$('#resetBtn').addEventListener('click',()=>{stopPlay();state.step=0;state.ratio=.55;state.mode='g';state.hoverX=null;$('#tSlider').value='550';setK(.12);$('#hoverBox').style.display='none'});
+$('#saveBtn').addEventListener('click',()=>{const a=document.createElement('a');a.download='2025高考数学第18题_函数图像_k='+state.k.toFixed(3)+'.png';a.href=mainCanvas.toDataURL('image/png');document.body.appendChild(a);a.click();a.remove()});
+mainCanvas.addEventListener('pointermove',e=>{let T=state.mainT;if(!T)return;let rect=mainCanvas.getBoundingClientRect(),px=e.clientX-rect.left;if(px<T.p.L||px>T.w-T.p.R){state.hoverX=null;$('#hoverBox').style.display='none';drawMain();return}let x=(px-T.p.L)/(T.w-T.p.L-T.p.R)*(T.xmax-T.xmin)+T.xmin;state.hoverX=x;let box=$('#hoverBox');box.textContent='x = '+fmt(x,4)+'  ·  f(x) = '+fmt(f(x),5)+'  ·  f′(x) = '+fmt(df(x),5);box.style.display='block';box.style.left=clamp(px+11,3,rect.width-230)+'px';box.style.top=clamp(e.clientY-rect.top-48,9,rect.height-36)+'px';drawMain()});mainCanvas.addEventListener('pointerleave',()=>{state.hoverX=null;$('#hoverBox').style.display='none';drawMain()});
+document.addEventListener('keydown',e=>{let el=document.activeElement;if(el&&(['INPUT','TEXTAREA'].includes(el.tagName)))return;if(e.key==='ArrowRight'){stopPlay();setStep(state.step+1)}else if(e.key==='ArrowLeft'){stopPlay();setStep(state.step-1)}});
+let resizeQueued=false;window.addEventListener('resize',()=>{if(!resizeQueued){resizeQueued=true;requestAnimationFrame(()=>{resizeQueued=false;drawMain();drawSecondary()})}});
+// All graphics are plotted using local Canvas APIs; no external JS, fonts, or network are required.
+renderAll();
+</script>
+</body>
+</html>

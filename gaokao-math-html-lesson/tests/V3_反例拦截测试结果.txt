@@ -1,0 +1,55 @@
+INFO desktop: file:// 被环境阻断，改用同 HTML 字节内容加载（未验证双击）
+FAIL desktop: 结构区域 stage
+FAIL desktop: 结构区域 teaching-side
+FAIL desktop: 结构区域 chapter-nav
+FAIL desktop: 结构区域 teaching-card
+FAIL desktop: 结构区域 controls
+FAIL desktop: 教学语义 step-title
+FAIL desktop: 教学语义 objective
+FAIL desktop: 教学语义 why
+FAIL desktop: 教学语义 derivation
+FAIL desktop: 教学语义 conclusion
+FAIL desktop: 教学语义 reflection
+INFO desktop: 缺失 V3 语义角色，剩余检查尽可能继续，不能评为合格
+FAIL desktop: 缺少工程状态 QA 接口，无法验证图文同源
+INFO mobile: file:// 被环境阻断，改用同 HTML 字节内容加载（未验证双击）
+FAIL mobile: 结构区域 stage
+FAIL mobile: 结构区域 teaching-side
+FAIL mobile: 结构区域 chapter-nav
+FAIL mobile: 结构区域 teaching-card
+FAIL mobile: 结构区域 controls
+FAIL mobile: 教学语义 step-title
+FAIL mobile: 教学语义 objective
+FAIL mobile: 教学语义 why
+FAIL mobile: 教学语义 derivation
+FAIL mobile: 教学语义 conclusion
+FAIL mobile: 教学语义 reflection
+INFO mobile: 缺失 V3 语义角色，剩余检查尽可能继续，不能评为合格
+FAIL mobile: 缺少工程状态 QA 接口，无法验证图文同源
+
+V3 可执行教学视觉契约：FAIL, 必须整改
+未通过项：
+- desktop: 结构区域 stage
+- desktop: 结构区域 teaching-side
+- desktop: 结构区域 chapter-nav
+- desktop: 结构区域 teaching-card
+- desktop: 结构区域 controls
+- desktop: 教学语义 step-title
+- desktop: 教学语义 objective
+- desktop: 教学语义 why
+- desktop: 教学语义 derivation
+- desktop: 教学语义 conclusion
+- desktop: 教学语义 reflection
+- desktop: 缺少工程状态 QA 接口，无法验证图文同源
+- mobile: 结构区域 stage
+- mobile: 结构区域 teaching-side
+- mobile: 结构区域 chapter-nav
+- mobile: 结构区域 teaching-card
+- mobile: 结构区域 controls
+- mobile: 教学语义 step-title
+- mobile: 教学语义 objective
+- mobile: 教学语义 why
+- mobile: 教学语义 derivation
+- mobile: 教学语义 conclusion
+- mobile: 教学语义 reflection
+- mobile: 缺少工程状态 QA 接口，无法验证图文同源

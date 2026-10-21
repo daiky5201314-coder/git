@@ -1,0 +1,44 @@
+INFO: desktop: 环境阻断 file://，已用相同 HTML 内容加载；不能视为双击文件实测
+PASS: desktop: 测试接口存在
+PASS: desktop: 初始进度与总时间合理
+PASS: desktop: 初始状态未自动占用播放
+PASS: desktop: 定位 0% 后时间正确
+PASS: desktop: 定位 25% 后时间正确
+PASS: desktop: 定位 50% 后时间正确
+PASS: desktop: 定位 75% 后时间正确
+PASS: desktop: 定位 100% 后时间正确
+PASS: desktop: 数学场景状态存在真实中间态
+PASS: desktop: 画布/图形像素实际发生变化（不是伪造状态签名）
+PASS: desktop: 进度反向跳转后图形可确定性还原
+PASS: desktop: 至少三章真实教学内容
+PASS: desktop: 多章内部解题文字随时间变更
+PASS: desktop: 自动播放真实推进时间
+PASS: desktop: 进度条播放时自动跟随
+PASS: desktop: 暂停后时间不漂移
+PASS: desktop: 从暂停位置可继续播放
+PASS: desktop: 无未捕获 JavaScript 异常
+PASS: desktop: 数学绘图区存在
+PASS: desktop: 没有明显水平溢出
+INFO: mobile: 环境阻断 file://，已用相同 HTML 内容加载；不能视为双击文件实测
+PASS: mobile: 测试接口存在
+PASS: mobile: 初始进度与总时间合理
+PASS: mobile: 初始状态未自动占用播放
+PASS: mobile: 定位 0% 后时间正确
+PASS: mobile: 定位 25% 后时间正确
+PASS: mobile: 定位 50% 后时间正确
+PASS: mobile: 定位 75% 后时间正确
+PASS: mobile: 定位 100% 后时间正确
+PASS: mobile: 数学场景状态存在真实中间态
+PASS: mobile: 画布/图形像素实际发生变化（不是伪造状态签名）
+PASS: mobile: 进度反向跳转后图形可确定性还原
+PASS: mobile: 至少三章真实教学内容
+PASS: mobile: 多章内部解题文字随时间变更
+PASS: mobile: 自动播放真实推进时间
+PASS: mobile: 进度条播放时自动跟随
+PASS: mobile: 暂停后时间不漂移
+PASS: mobile: 从暂停位置可继续播放
+PASS: mobile: 无未捕获 JavaScript 异常
+PASS: mobile: 数学绘图区存在
+PASS: mobile: 没有明显水平溢出
+
+总体结果：浏览器行为测试通过；仍需数学人工复核和真实视觉验收

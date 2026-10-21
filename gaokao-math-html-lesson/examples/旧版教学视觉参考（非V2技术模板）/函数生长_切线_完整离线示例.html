@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>函数生长与导数切线 · 离线动画技术示范</title>
+<style>
+:root{color-scheme:light;--ink:#1b2a42;--muted:#5f7085;--teal:#0d8c81;--orange:#d89039;--panel:#fff;--border:#dfe6ef}
+*{box-sizing:border-box}body{font-family:system-ui,"Microsoft Yahei",sans-serif;background:#f3f7f9;color:var(--ink);margin:0;padding:22px}.wrap{max-width:1120px;margin:0 auto}h1{font-size:25px;margin:0 0 8px}header p{font-size:14px;color:var(--muted);line-height:1.7;margin:0 0 20px}.layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,1fr);gap:18px}.card{background:var(--panel);border:1px solid var(--border);border-radius:17px;overflow:hidden}.stage{background:#112239;color:#eff6ff;padding:16px}.canvaswrap{height:470px}canvas{display:block;width:100%;height:100%}.legend{color:#bdcbda;font-size:12px;padding:4px 0 9px}.note{color:#d1e1f1;font-size:12px;margin:0}.controls{padding:15px 16px;display:grid;gap:12px}.bar{display:flex;gap:7px;flex-wrap:wrap}.btn{border:1px solid #d5e2e9;background:#fff;padding:9px 12px;border-radius:9px;color:#2a485b;font-weight:650;cursor:pointer}.btn.primary{background:#0a8f83;color:#fff;border-color:#0a8f83}.btn:focus-visible,input:focus-visible{outline:3px solid #85ddd0}input[type=range]{width:100%;accent-color:#0e9286}.row{display:flex;align-items:center;justify-content:space-between;gap:9px;font-size:13px}.side{padding:20px;display:flex;flex-direction:column;gap:14px}h2{font-size:17px;margin:0}.subtitle{color:#658095;font-size:13px;line-height:1.85}.eq{font-family:"Cambria Math",Georgia,serif;background:#edf7f5;padding:13px;border-radius:10px;font-size:20px;line-height:1.8;overflow-wrap:anywhere}.caption{font-size:14px;line-height:1.9;color:#344e5f;min-height:72px}.data{display:grid;gap:7px;padding:13px 0;border-top:1px solid #e5edf2;border-bottom:1px solid #e5edf2}.data div{display:flex;justify-content:space-between;gap:10px;font-size:13px}.data strong{font-variant-numeric:tabular-nums}.muted{font-size:12px;color:#61748b;line-height:1.9}.tag{display:inline-block;color:#0d8177;background:#e3f4ef;border-radius:6px;font-size:12px;padding:4px 7px}.sliderview{font-variant-numeric:tabular-nums;color:#087e74}footer{font-size:12px;color:#6c7b8b;line-height:1.8;margin-top:20px}@media(max-width:760px){body{padding:12px}h1{font-size:21px}.layout{grid-template-columns:1fr}.canvaswrap{height:360px}.side{padding:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>函数曲线生长 · 切线与导数同步</h1><p>独立离线动画技术参考（非高考真题完整教案）。先出现坐标系，再让函数图像从左向右逐步绘制，运动点、切线、导数符号和极值同步显示。</p></header>
+<div class="layout">
+ <section class="card"><div class="stage"><div class="legend">青色：函数曲线　橙色：当前切线　绿色：已经过的极值点　白色：扫描动点</div><div class="canvaswrap"><canvas id="graph" aria-label="随时间生长的函数曲线及动态切线">您的浏览器不支持 Canvas</canvas></div><p class="note" id="sceneNote">点击自动演示，从坐标轴开始观察函数生长。</p></div>
+ <div class="controls"><div class="bar"><button class="btn primary" id="playBtn">▶ 自动演示</button><button class="btn" id="resetBtn">↺ 重播</button><button class="btn" id="prevBtn">← 前一阶段</button><button class="btn" id="nextBtn">后一阶段 →</button></div>
+ <div class="row"><label for="seek">全局演示进度</label><output id="timeLabel">00:00 / 00:18</output></div><input id="seek" type="range" min="0" max="1800" step="1" value="0" aria-label="演示进度">
+ <div class="row"><label for="param">参数 a（允许范围 0.5 ≤ a ≤ 3）</label><output id="paramLabel" class="sliderview">1.50</output></div><input id="param" type="range" min="0.5" max="3" step="0.05" value="1.5" aria-label="函数参数">
+ <div class="row"><label for="speed">演示速度</label><select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select><label><input type="checkbox" id="tangent" checked> 显示切线</label></div></div></section>
+ <aside class="card side"><span class="tag">知识点动画示例</span><h2 id="stageTitle">第 1 阶段：建立坐标系</h2><div class="eq">f(x) = x³/3 − ax<br>f′(x) = x² − a</div><div class="caption" id="caption">函数增减性与导数符号之间的联系，需要通过连续运动观察，而不能先展示最终曲线。</div>
+ <div class="data"><div><span>扫描点横坐标 x</span><strong id="currentX">—</strong></div><div><span>函数值 f(x)</span><strong id="currentY">—</strong></div><div><span>切线斜率 f′(x)</span><strong id="currentSlope">—</strong></div><div><span>趋势判断</span><strong id="trend">尚未开始</strong></div></div>
+ <div class="muted">极值位置由严格推导得到：f′(x)=0 ⇔ x=±√a。左侧 x&lt;−√a、右侧 x&gt;√a 时 f′(x)&gt;0，中间 −√a&lt;x&lt;√a 时 f′(x)&lt;0，因此先增、后减、再增。动画只是展示这个结论的几何直观，不能替代导数证明。</div>
+ </aside></div>
+<footer>本技术示例使用纯 HTML/CSS/Canvas/JavaScript，不需要服务器或联网。函数生长表示图形逐段显现，不是函数本身随物理时间变化。正式高考题请按 Skill 补足完整题面、基础知识、解题逻辑、完整证明与自测。</footer>
+</div>
+<script>
+'use strict';
+const q=id=>document.getElementById(id),canvas=q('graph'),ctx=canvas.getContext('2d');
+const total=18, xMin=-3.35,xMax=3.35, yMin=-13,yMax=13;
+let a=1.5,time=0,playing=false,last=null,dirty=true,speed=1,withTangent=true,w=0,h=0,dpr=1;
+const ease=u=>{u=Math.max(0,Math.min(1,u));return u*u*(3-2*u)};
+const f=x=>x*x*x/3-a*x, df=x=>x*x-a;
+const seg=(u,l,r)=>Math.max(0,Math.min(1,(u-l)/(r-l)));
+function xAt(t){let s=Math.sqrt(a);if(t<1.1)return null;if(t<5.5)return xMin+(-s-xMin)*ease(seg(t,1.1,5.5));if(t<6.4)return -s;if(t<11.1)return -s+2*s*ease(seg(t,6.4,11.1));if(t<12)return s;if(t<15.9)return s+(xMax-s)*ease(seg(t,12,15.9));return xMax;}
+function resize(){const r=canvas.getBoundingClientRect();const D=Math.min(window.devicePixelRatio||1,2);if(r.width===w&&r.height===h&&dpr===D)return;w=r.width;h=r.height;dpr=D;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);dirty=true;}
+function draw(){resize();const L=w<480?43:54,R=17,T=22,B=38,X=x=>L+(x-xMin)/(xMax-xMin)*(w-L-R),Y=y=>h-B-(y-yMin)/(yMax-yMin)*(h-T-B);ctx.clearRect(0,0,w,h);ctx.fillStyle='#142842';ctx.fillRect(0,0,w,h);
+ ctx.save();ctx.strokeStyle='#334963';ctx.lineWidth=.8;ctx.fillStyle='#9db1c5';ctx.font='11px system-ui';
+ for(let x=-3;x<=3;x++){const u=X(x);ctx.beginPath();ctx.moveTo(u,T);ctx.lineTo(u,h-B);ctx.stroke();ctx.textAlign='center';ctx.fillText(x,u,h-B+17);}
+ for(let y=-12;y<=12;y+=4){const v=Y(y);ctx.beginPath();ctx.moveTo(L,v);ctx.lineTo(w-R,v);ctx.stroke();ctx.textAlign='right';ctx.fillText(y,L-8,v+3);}
+ ctx.strokeStyle='#a3bcd3';ctx.lineWidth=1.3;ctx.beginPath();ctx.moveTo(L,Y(0));ctx.lineTo(w-R,Y(0));ctx.moveTo(X(0),T);ctx.lineTo(X(0),h-B);ctx.stroke();ctx.restore();
+ const x0=xAt(time);if(x0===null)return;
+ ctx.save();ctx.beginPath();ctx.rect(L,T,w-L-R,h-T-B);ctx.clip();ctx.lineWidth=3;ctx.strokeStyle='#54e4d2';ctx.beginPath();let started=false;
+ const n=Math.max(2,Math.ceil((x0-xMin)/(xMax-xMin)*700));for(let i=0;i<=n;i++){const x=xMin+(x0-xMin)*i/n;const px=X(x),py=Y(f(x));if(!Number.isFinite(py))continue;if(!started){ctx.moveTo(px,py);started=true;}else ctx.lineTo(px,py);}ctx.stroke();
+ const s=Math.sqrt(a);for(const [x,type] of [[-s,'极大值'],[s,'极小值']]){if(x>x0+1e-5)continue;ctx.fillStyle='#a5f5b7';ctx.beginPath();ctx.arc(X(x),Y(f(x)),5,0,Math.PI*2);ctx.fill();ctx.font='12px system-ui';ctx.fillText(type,X(x)+9,Y(f(x))-9);}
+ const y0=f(x0),m=df(x0);if(withTangent){const xa=x0-1.5,xb=x0+1.5;ctx.lineWidth=2;ctx.strokeStyle='#ffb969';ctx.beginPath();ctx.moveTo(X(xa),Y(y0+m*(xa-x0)));ctx.lineTo(X(xb),Y(y0+m*(xb-x0)));ctx.stroke();}
+ ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(X(x0),Y(y0),5.5,0,Math.PI*2);ctx.fill();ctx.restore();
+}
+function fmt(n){return n===null?'—':n.toFixed(3)}
+function sync(){let stage=0,cap='',scene='';if(time<1.1){stage=0;cap='观察：先建立 x、y 坐标轴与刻度，尚未绘制函数曲线。';scene='坐标系就绪 · 等待曲线开始生长';}
+ else if(time<6.4){stage=1;cap='曲线从左向右生长。切线斜率逐渐减小，到 x=−√a 时变成 0，形成极大值。';scene='观察增函数如何过渡到极大值';}
+ else if(time<12){stage=2;cap='越过 −√a 后导数变负：函数开始下降；运动点经过 x=√a 时导数再次为 0。';scene='切线下降，直到极小值';}
+ else if(time<16){stage=3;cap='越过 √a，导数恢复为正：切线重新向上倾斜，函数再次递增。';scene='函数重新递增';}
+ else {stage=4;cap='函数已完整生长。严谨依据是 f′(x)=x²−a 的符号在 ±√a 两侧改变，不是“凭图像猜测”。';scene='完整曲线已绘制 · 复核导数符号';}
+ q('stageTitle').textContent=['第 1 阶段：建立坐标系','第 2 阶段：递增至极大值','第 3 阶段：递减至极小值','第 4 阶段：重新递增','第 5 阶段：总结规律'][stage];q('caption').textContent=cap;q('sceneNote').textContent=scene;
+ let x=xAt(time);q('currentX').textContent=fmt(x);q('currentY').textContent=x===null?'—':fmt(f(x));q('currentSlope').textContent=x===null?'—':fmt(df(x));q('trend').textContent=x===null?'尚未开始':Math.abs(df(x))<.0001?'斜率为零（转折点）':df(x)>0?'导数为正 · 递增':'导数为负 · 递减';
+ q('seek').value=Math.round(time/total*1800);q('timeLabel').textContent=String(Math.floor(time/60)).padStart(2,'0')+':'+String(Math.floor(time%60)).padStart(2,'0')+' / 00:18';q('playBtn').textContent=playing?'Ⅱ 暂停演示':time>=total?'↺ 重新演示':time>0?'▶ 继续演示':'▶ 自动演示';q('paramLabel').textContent=a.toFixed(2);
+}
+function render(){if(!dirty)return;draw();sync();dirty=false;}
+function stop(){playing=false;last=null;dirty=true;render();}
+function play(){if(playing){stop();return;}if(time>=total)time=0;playing=true;last=null;dirty=true;render();}
+function seek(t){time=Math.max(0,Math.min(total,t));dirty=true;render();}
+function tick(ts){if(playing){if(last!==null)time=Math.min(total,time+Math.min(.07,(ts-last)/1000)*speed);last=ts;dirty=true;if(time>=total){playing=false;last=null;}}render();requestAnimationFrame(tick)}
+q('playBtn').onclick=play;q('resetBtn').onclick=()=>{stop();seek(0)};q('seek').oninput=e=>{const target=+e.target.value/100;stop();seek(target)};
+q('prevBtn').onclick=()=>{stop();const cuts=[0,1.1,6.4,12,16,18];let idx=cuts.findIndex(c=>c>=time-.01);if(idx<0)idx=cuts.length-1;seek(cuts[Math.max(0,idx-1)])};
+q('nextBtn').onclick=()=>{stop();let next=[1.1,6.4,12,16,18].find(c=>c>time+.01);seek(next===undefined?18:next)};
+q('param').oninput=e=>{stop();a=+e.target.value;dirty=true;render()};q('speed').onchange=e=>speed=+e.target.value;q('tangent').onchange=e=>{withTangent=e.target.checked;dirty=true;render()};
+window.addEventListener('resize',()=>{dirty=true});document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)stop()});
+resize();render();requestAnimationFrame(tick);
+</script>
+</body></html>

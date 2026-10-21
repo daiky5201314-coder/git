@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>标准 HTML5 时间线技术参考 · 函数生长动画</title>
+<style>
+:root{font-family:system-ui,"Microsoft YaHei",sans-serif;color:#1b2c43;background:#f4f7fb}*{box-sizing:border-box}body{margin:0;padding:20px}
+header,main,footer{max-width:1100px;margin:auto}h1{font-size:clamp(22px,3vw,32px);margin:6px 0 12px}header p,footer{color:#64748b;line-height:1.7;font-size:14px}.layout{display:grid;grid-template-columns:minmax(0,3fr) minmax(290px,2fr);gap:18px}.card{background:white;border-radius:16px;box-shadow:0 8px 20px #23334e13;overflow:hidden}.stage{background:#101e34;padding:18px;color:#c7d9ef}canvas{display:block;width:100%;height:390px}.controls{padding:16px;display:grid;gap:14px}.toolbar{display:flex;flex-wrap:wrap;gap:8px}button{border:1px solid #cdd7e4;padding:10px 13px;border-radius:9px;background:#fff;font-weight:650;color:#294362;cursor:pointer}button.primary{background:#0f846f;color:white;border:0}button:focus-visible,input:focus-visible{outline:3px solid #55a9e8}input[type=range]{width:100%;accent-color:#0f846f}aside{padding:22px}aside h2{margin:0 0 12px;font-size:20px}#caption{line-height:1.8;min-height:120px;color:#314662}.math{padding:12px 15px;border:1px solid #d5e1ed;background:#f0f6fc;border-radius:10px;font-size:19px}.legend{font-size:12px;color:#bcd0e6}.minor{color:#7789a0;font-size:13px}output{font-variant-numeric:tabular-nums}.topline{display:flex;justify-content:space-between;align-items:center;gap:8px}@media(max-width:760px){body{padding:10px}.layout{grid-template-columns:1fr}canvas{height:320px}}
+</style>
+</head>
+<body>
+<header><h1>函数曲线生长 · 标准状态驱动演示</h1><p>教学技术参考：同一全局时间轴同步控制曲线、运动点、动态切线、公式、字幕、进度条。这个页面不是完整高考真题教案，而是给 Agent 参考的可测试工程骨架。</p></header>
+<main class="layout">
+<section class="card" aria-label="函数交互演示">
+ <div class="stage"><div class="legend">青线：已经绘制的函数；黄线：运动点切线；白点：当前函数值</div><canvas id="graph" aria-label="函数 y=x³/3−1.5x 的渐进曲线与动态切线">浏览器不支持 Canvas</canvas></div>
+ <nav class="controls" aria-label="动画控制">
+  <div class="toolbar"><button type="button" id="play" class="primary" data-lesson-control="play">▶ 自动演示</button><button type="button" id="prev">上一步</button><button type="button" id="next">下一步</button><button type="button" id="replay">重新播放</button></div>
+  <div class="topline"><label for="seek">播放进度</label><output id="time" aria-live="off">0.0 / 12.0 秒</output></div><input id="seek" type="range" min="0" max="1200" value="0" step="1" data-lesson-control="seek" aria-label="播放进度">
+  <div class="topline"><label for="speed">播放速度</label><select id="speed" data-lesson-control="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>
+ </nav>
+</section>
+<aside class="card" aria-label="同步教学说明"><div class="minor" id="chapter">基础概念 · 认识函数</div><h2>当前数学解释</h2><p id="caption" aria-live="polite">先观察坐标轴，函数曲线还未开始出现。</p><div class="math" id="formula">f(x)=x³/3−1.5x</div><p class="minor" id="status">等待动画开始</p><p class="minor">记住：动画中「曲线的生长」表示逐渐揭示已确定的图像，绝不是函数值随时间发生变化。判断单调性要依据导数符号，不能仅凭动画推断。</p></aside>
+</main>
+<footer>技术验收参考：双击 HTML 离线可运行；既能手动 seek，也能自动播放；支持可靠的浏览器测试接口 <code>window.__lessonQA</code>。</footer>
+<script>
+'use strict';
+const $=id=>document.getElementById(id), ctx=$('graph').getContext('2d');
+const durationSec=12, segments=[0,3,6,9,12];
+const events=[
+ {at:0,id:'a1',chapter:'第一章 · 认识函数',text:'先出现坐标轴。函数表达式与定义域是图像绘制的依据。',formula:'f(x)=x³/3−1.5x'},
+ {at:1.5,id:'a2',chapter:'第一章 · 认识函数',text:'观察曲线的起点。数学上每个 x 对应一个固定的 f(x)，生长仅表示逐段揭示。',formula:'x∈ℝ'},
+ {at:3,id:'b1',chapter:'第二章 · 导数知识',text:'导数可以理解为曲线在当前点的切线斜率。注意切线会随运动点变化。',formula:'f′(x)=x²−1.5'},
+ {at:4.5,id:'b2',chapter:'第二章 · 导数知识',text:'当 f′(x)>0 时曲线递增；当 f′(x)<0 时曲线递减。',formula:'f′(x)>0 ⇒ 递增'},
+ {at:6,id:'c1',chapter:'第三章 · 解题思路',text:'要判断极值，先找导数为零的候选位置，再核对导数符号是否变号。',formula:'f′(x)=0 ⇔ x=±√1.5'},
+ {at:7.5,id:'c2',chapter:'第三章 · 解题思路',text:'左极值点附近导数由正变负，函数先增后减，因此产生极大值。',formula:'正 → 0 → 负'},
+ {at:9,id:'d1',chapter:'第四章 · 结论与巩固',text:'右极值点附近导数由负变正，形成极小值。请自行观察切线由负斜率过渡到正斜率。',formula:'负 → 0 → 正'},
+ {at:10.5,id:'d2',chapter:'第四章 · 结论与巩固',text:'总结：导数符号是严格依据，动画只帮助建立直观认识。',formula:'递增 → 递减 → 递增'}
+];
+let playheadSec=0,playing=false,playbackRate=1,lastTimestamp=null,dirty=true,w=0,h=0,dpr=1;
+const xMin=-3,xMax=3,yMin=-10,yMax=10, f=x=>x*x*x/3-1.5*x, df=x=>x*x-1.5;
+const clamp=(a,lo,hi)=>Math.max(lo,Math.min(hi,a)), smooth=u=>{u=clamp(u,0,1);return u*u*(3-2*u)};
+let currentState=null;
+function sceneAt(t){
+ t=clamp(t,0,durationSec);
+ const evt=events.reduce((prev,e)=>t>=e.at?e:prev,events[0]);
+ // 0~1 秒先画坐标轴，1~11 秒让曲线生长；透明度、切线、动点统一从同一个 t 计算。
+ const visibleProgress=smooth((t-1)/10), visibleX=xMin+(xMax-xMin)*visibleProgress;
+ const x=visibleProgress>0?visibleX:null,y=x===null?null:f(x),slope=x===null?null:df(x);
+ return {timeSec:t,durationSec,playing,chapterId:evt.chapter,captionId:evt.id,caption:evt.text,formula:evt.formula,
+  visualProgress:visibleProgress,x,y,slope,sceneSignature:`${visibleProgress.toFixed(6)}|${(x??-99).toFixed(6)}|${(slope??-99).toFixed(6)}`,
+  playbackRate};
+}
+function ensureSize(){const r=$('graph').getBoundingClientRect();const nextDpr=Math.min(window.devicePixelRatio||1,2);
+ if(r.width===w&&r.height===h&&nextDpr===dpr)return;
+ w=r.width;h=r.height;dpr=nextDpr;const canvas=$('graph');canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);dirty=true;}
+function renderScene(s){ensureSize();const L=40,R=15,T=22,B=30,X=x=>L+(x-xMin)/(xMax-xMin)*(w-L-R),Y=y=>h-B-(y-yMin)/(yMax-yMin)*(h-T-B);
+ ctx.clearRect(0,0,w,h);ctx.fillStyle='#12243d';ctx.fillRect(0,0,w,h);
+ ctx.strokeStyle='#354f67';ctx.lineWidth=1;ctx.font='11px system-ui';ctx.fillStyle='#a7c0d3';
+ for(let x=-3;x<=3;x++){let px=X(x);ctx.beginPath();ctx.moveTo(px,T);ctx.lineTo(px,h-B);ctx.stroke();ctx.fillText(String(x),px-3,h-8);}
+ for(let y=-8;y<=8;y+=4){let py=Y(y);ctx.beginPath();ctx.moveTo(L,py);ctx.lineTo(w-R,py);ctx.stroke();ctx.fillText(String(y),6,py+4);}
+ ctx.strokeStyle='#b1c7e1';ctx.lineWidth=1.4;ctx.beginPath();ctx.moveTo(X(0),T);ctx.lineTo(X(0),h-B);ctx.moveTo(L,Y(0));ctx.lineTo(w-R,Y(0));ctx.stroke();
+ if(s.x===null)return;
+ ctx.save();ctx.beginPath();ctx.rect(L,T,w-L-R,h-T-B);ctx.clip();ctx.strokeStyle='#64e3ce';ctx.lineWidth=3;ctx.beginPath();
+ let n=Math.max(2,Math.ceil(450*s.visualProgress));for(let i=0;i<=n;i++){let x=xMin+(s.x-xMin)*i/n;i===0?ctx.moveTo(X(x),Y(f(x))):ctx.lineTo(X(x),Y(f(x)));}ctx.stroke();
+ const x=s.x,y=s.y,m=s.slope;ctx.strokeStyle='#ffbd76';ctx.lineWidth=2;ctx.beginPath();const span=.65;ctx.moveTo(X(x-span),Y(y-m*span));ctx.lineTo(X(x+span),Y(y+m*span));ctx.stroke();
+ ctx.fillStyle='white';ctx.beginPath();ctx.arc(X(x),Y(y),5,0,Math.PI*2);ctx.fill();ctx.restore();
+}
+function renderText(s){if($('caption').dataset.id!==s.captionId){$('caption').dataset.id=s.captionId;$('caption').textContent=s.caption;$('formula').textContent=s.formula;$('chapter').textContent=s.chapterId;}
+ $('status').textContent=s.x===null?'等待函数开始绘制':`x=${s.x.toFixed(2)}，f(x)=${s.y.toFixed(2)}，f′(x)=${s.slope.toFixed(2)} ${s.slope>=0?'（当前斜率非负）':'（当前斜率为负）'}`;}
+function renderControls(s){$('seek').value=String(Math.round(s.timeSec/durationSec*1200));$('time').textContent=`${s.timeSec.toFixed(1)} / 12.0 秒`;$('play').textContent=s.playing?'Ⅱ 暂停':'▶ 自动演示';}
+function applyTime(t){playheadSec=clamp(t,0,durationSec);currentState=sceneAt(playheadSec);renderScene(currentState);renderText(currentState);renderControls(currentState);dirty=false;}
+function pause(){playing=false;lastTimestamp=null;applyTime(playheadSec);}
+function play(){if(playing)return;if(playheadSec>=durationSec)playheadSec=0;playing=true;lastTimestamp=null;applyTime(playheadSec);}
+function seek(t){pause();applyTime(t);}
+function tick(ts){if(playing){if(lastTimestamp!==null){const elapsed=Math.max(0,(ts-lastTimestamp)/1000);playheadSec=Math.min(durationSec,playheadSec+Math.min(elapsed,.09)*playbackRate);}lastTimestamp=ts;if(playheadSec>=durationSec){playing=false;lastTimestamp=null;}dirty=true;}
+ if(dirty)applyTime(playheadSec);requestAnimationFrame(tick);}
+$('play').addEventListener('click',()=>playing?pause():play());$('replay').addEventListener('click',()=>{seek(0);play()});$('prev').addEventListener('click',()=>{const p=[...segments].reverse().find(t=>t<playheadSec-.05);seek(p??0)});$('next').addEventListener('click',()=>{const n=segments.find(t=>t>playheadSec+.05);seek(n??durationSec)});
+$('seek').addEventListener('input',e=>seek(Number(e.target.value)/100));$('speed').addEventListener('change',e=>{playbackRate=Number(e.target.value);applyTime(playheadSec)});
+window.addEventListener('resize',()=>{dirty=true});document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)pause()});
+window.__lessonQA={getSnapshot:()=>({timeSec:playheadSec,durationSec,playing,chapterId:currentState.chapterId,captionId:currentState.captionId,sceneSignature:currentState.sceneSignature,visualProgress:currentState.visualProgress,playbackRate}),seek,play,pause};
+applyTime(0);requestAnimationFrame(tick);
+</script>
+</body></html>

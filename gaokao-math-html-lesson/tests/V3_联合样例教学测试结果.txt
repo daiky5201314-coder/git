@@ -1,0 +1,60 @@
+INFO desktop: file:// 被环境阻断，改用同 HTML 字节内容加载（未验证双击）
+PASS desktop: 结构区域 stage
+PASS desktop: 结构区域 teaching-side
+PASS desktop: 结构区域 chapter-nav
+PASS desktop: 结构区域 teaching-card
+PASS desktop: 结构区域 controls
+PASS desktop: 教学语义 step-title
+PASS desktop: 教学语义 objective
+PASS desktop: 教学语义 why
+PASS desktop: 教学语义 derivation
+PASS desktop: 教学语义 conclusion
+PASS desktop: 教学语义 reflection
+PASS desktop: step-title 随教学步骤真实更新
+PASS desktop: objective 随教学步骤真实更新
+PASS desktop: why 随教学步骤真实更新
+PASS desktop: derivation 随教学步骤真实更新
+PASS desktop: 学生能读到“为什么这样做”
+PASS desktop: 当步有可见、非一句话的推导内容
+PASS desktop: 有可见的阶段结论
+PASS desktop: 有可见的提问/提示/反思
+PASS desktop: 主数学舞台具有足够高度
+PASS desktop: 数学舞台不是狭小角落
+PASS desktop: 完整教学卡片区域可读
+PASS desktop: 主舞台/教学侧栏布局符合目标
+PASS desktop: 无页面横向溢出
+PASS desktop: 教学章节导航不少于4个真实入口
+PASS desktop: 点击导航真正改变共享播放头
+PASS desktop: 导航有当前章节视觉/语义状态
+PASS desktop: 浏览器无 JavaScript 未捕获异常
+INFO mobile: file:// 被环境阻断，改用同 HTML 字节内容加载（未验证双击）
+PASS mobile: 结构区域 stage
+PASS mobile: 结构区域 teaching-side
+PASS mobile: 结构区域 chapter-nav
+PASS mobile: 结构区域 teaching-card
+PASS mobile: 结构区域 controls
+PASS mobile: 教学语义 step-title
+PASS mobile: 教学语义 objective
+PASS mobile: 教学语义 why
+PASS mobile: 教学语义 derivation
+PASS mobile: 教学语义 conclusion
+PASS mobile: 教学语义 reflection
+PASS mobile: step-title 随教学步骤真实更新
+PASS mobile: objective 随教学步骤真实更新
+PASS mobile: why 随教学步骤真实更新
+PASS mobile: derivation 随教学步骤真实更新
+PASS mobile: 学生能读到“为什么这样做”
+PASS mobile: 当步有可见、非一句话的推导内容
+PASS mobile: 有可见的阶段结论
+PASS mobile: 有可见的提问/提示/反思
+PASS mobile: 主数学舞台具有足够高度
+PASS mobile: 数学舞台不是狭小角落
+PASS mobile: 完整教学卡片区域可读
+PASS mobile: 主舞台/教学侧栏布局符合目标
+PASS mobile: 无页面横向溢出
+PASS mobile: 教学章节导航不少于4个真实入口
+PASS mobile: 点击导航真正改变共享播放头
+PASS mobile: 导航有当前章节视觉/语义状态
+PASS mobile: 浏览器无 JavaScript 未捕获异常
+
+V3 可执行教学视觉契约：PASS（仅最低门槛；还需参考截图对比+数学审校+真人教学审片）

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>2025 新高考Ⅱ卷 · 数学第17题 | 空间翻折可视化课堂</title>
+<meta name="description" content="2025新高考Ⅱ卷数学17题：离线交互式空间翻折、二面角、线面平行和法向量完整教学演示。" />
+<style>
+:root{--bg:#f6f7f8;--ink:#14213a;--muted:#6c7890;--line:#e1e6ee;--teal:#0c887e;--teal2:#dff5f0;--orange:#dc8b37;--violet:#8676e4;--blue:#4a92db;--stage:#111b30;--panel:#fff;--shadow:0 8px 28px rgba(20,33,58,.045)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft Yahei",sans-serif;-webkit-font-smoothing:antialiased}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #83d4cd;outline-offset:2px}.app{max-width:1550px;margin:auto;padding:22px 28px 30px}.header{display:flex;align-items:center;gap:16px;margin-bottom:20px}.stamp{width:55px;height:55px;display:grid;place-items:center;background:#142c40;color:#fff;border-radius:15px;font-weight:850;letter-spacing:-2px;font-size:29px;flex:none}.headmain{flex:1;min-width:0}.eyebrow{text-transform:uppercase;font-size:11px;font-weight:750;letter-spacing:2px;color:#6d8298}.header h1{font-size:23px;margin:4px 0;letter-spacing:-.4px}.subtitle{font-size:12px;color:var(--muted)}.headright{display:flex;gap:8px}.smallbtn{border:1px solid var(--line);padding:10px 13px;border-radius:11px;color:var(--ink);background:#fff;font-size:12px;font-weight:700}.smallbtn:hover{background:#f0f4f6}.layout{display:grid;grid-template-columns:minmax(0,1.53fr) minmax(370px,.9fr);gap:18px;align-items:start}.left,.right{min-width:0}.stagecard{background:var(--stage);border-radius:19px;overflow:hidden;box-shadow:0 13px 36px rgba(16,26,49,.14)}.stagetop{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:17px 19px 10px;color:#e6f1fc}.pill{font-size:11px;letter-spacing:.5px;font-weight:760;background:rgba(85,232,203,.1);color:#8ce4d5;border:1px solid rgba(85,232,203,.16);padding:7px 10px;border-radius:20px}.stagehead{font-size:13px;color:#c8d5e6}.stagecanvas{position:relative;height:520px;touch-action:none;cursor:grab;overflow:hidden}.stagecanvas:active{cursor:grabbing}#scene{width:100%;height:100%;display:block}.canvashelp{position:absolute;left:17px;bottom:15px;color:#aebbd1;font-size:11px;pointer-events:none;background:rgba(16,25,42,.72);padding:8px 10px;border:1px solid rgba(200,219,249,.1);border-radius:9px}.statechip{position:absolute;right:18px;top:12px;background:rgba(12,25,44,.73);border:1px solid rgba(209,220,242,.15);color:#dbe9f6;padding:11px 13px;border-radius:12px;min-width:168px;pointer-events:none}.statechip strong{font-size:20px;font-variant-numeric:tabular-nums}.statechip span{font-size:11px;color:#b6c6d9}.statechip hr{border:0;border-top:1px solid #44506a;margin:7px 0}.statechip .highlight{color:#90edda}.legend{display:flex;flex-wrap:wrap;gap:13px 16px;align-items:center;padding:0 20px 16px;font-size:11px;color:#b6c6db}.dot{display:inline-block;width:9px;height:9px;border-radius:3px;vertical-align:middle;margin-right:5px}.controlcard{background:var(--panel);border-radius:17px;padding:18px;margin-top:15px;border:1px solid var(--line);box-shadow:var(--shadow)}.controlsA{display:flex;flex-wrap:wrap;gap:7px;align-items:center}.primary{border:0;background:#128e83;color:white;padding:11px 16px;border-radius:11px;font-weight:750;font-size:13px}.primary:hover{background:#0e7d73}.secondarybtn{border:1px solid #dce4eb;background:#fff;color:#243452;padding:10px 13px;border-radius:11px;font-weight:700;font-size:12px}.secondarybtn:hover{background:#f4f7fa}.controlmeta{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:13px 0 5px}.smalltitle{font-size:12px;font-weight:700;color:#52617a}.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}.angleval{font-size:13px;color:var(--teal);font-weight:800}.range{width:100%;height:7px;accent-color:#168f85;cursor:pointer}.anglelabels{display:flex;justify-content:space-between;font-size:10px;color:#8591a3;margin-top:3px}.controlfooter{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:13px}.checkchip{font-size:11px;border:1px solid #dce4eb;background:#fafcfd;color:#506079;border-radius:9px;padding:7px 10px;cursor:pointer}.checkchip.on{color:#0d857c;border-color:#a7dcd5;background:#e8faf5}.speed{font-size:11px;border:1px solid #dce4eb;background:white;border-radius:8px;padding:7px;color:#495a76}.note{background:#edf7f5;border:1px solid #c9e8e1;border-radius:12px;padding:12px 13px;margin-top:13px;color:#276862;font-size:12px;line-height:1.75}.chapternav{background:white;border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-bottom:12px;display:flex;flex-wrap:wrap;gap:6px}.tab{border:1px solid transparent;background:transparent;color:#64728a;padding:8px 11px;border-radius:9px;font-size:12px;font-weight:740;transition:.15s}.tab:hover{background:#f1f6f6}.tab.active{background:#e0f4f0;border-color:#c1e6dd;color:#087a70}.lessoncard{background:white;border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);overflow:hidden}.lessonheader{padding:21px 22px 16px;border-bottom:1px solid #ebeff4;background:linear-gradient(125deg,#fff 60%,#f0faf7)}.progressrow{display:flex;align-items:center;justify-content:space-between;gap:10px}.overline{color:#13897f;letter-spacing:1.4px;font-size:11px;font-weight:820}.stepcount{font-size:12px;color:#7b889c}.prog{height:4px;background:#e8edee;border-radius:9px;margin:11px 0 14px;overflow:hidden}.prog span{display:block;background:#15a191;height:100%;width:0;transition:width .3s}.lessonheader h2{font-size:22px;line-height:1.32;margin:0 0 8px;letter-spacing:-.4px}.lessonheader p{font-size:13px;line-height:1.7;color:#60718a;margin:0}.lessonbody{padding:19px 22px 22px;min-height:345px}.lessonbody p{font-size:13px;line-height:1.88;color:#465574;margin:9px 0}.lessonbody ul{margin:9px 0 12px;padding-left:19px}.lessonbody li{font-size:13px;line-height:1.85;margin-bottom:8px;color:#45536e}.block{background:#f6f8fb;border-radius:12px;padding:12px 13px;margin:11px 0;border:1px solid #e9edf3}.block.orange{background:#fff7ec;border-color:#f3e0c4}.block.teal{background:#effaf6;border-color:#c9e9db}.block.violet{background:#f5f3ff;border-color:#e4ddff}.block h4{font-size:12px;margin:0 0 6px;font-weight:800;color:#1b334e}.block p{margin:5px 0;font-size:12px}.mathline{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;color:#233252;font-weight:600;font-size:18px;line-height:1.8;padding:2px 0;overflow-wrap:anywhere}.mathline.sm{font-size:16px}.mathline.large{font-size:23px}.mathline.green{color:#0b8177}.stepbadge{display:inline-block;vertical-align:middle;font-size:10px;font-weight:700;color:#2b7e70;border:1px solid #c4e9df;background:#ecfaf6;border-radius:7px;padding:3px 6px;margin-right:5px}.key{font-weight:750;color:#12394c}.point{color:#0d8d82;font-weight:800}.lessonfooter{border-top:1px solid #edf0f4;padding:12px 22px 18px;background:#fcfdfd;display:flex;gap:9px;align-items:flex-start}.lessonfooter svg{flex:none;margin-top:2px}.lessonfooter p{margin:0;color:#627387;font-size:12px;line-height:1.8}.sidebarbottom{margin-top:12px;background:white;border:1px solid var(--line);border-radius:17px;padding:15px 17px}.sidehead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.sidehead b{font-size:13px}.sidehead span{font-size:11px;color:#8a97aa}.roadmap{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.roadstep{height:29px;border:1px solid #d9e1e9;border-radius:7px;background:#f7f9fb;color:#7b8798;display:grid;place-items:center;font-weight:700;font-size:11px}.roadstep.active{background:#0e8f84;color:#fff;border-color:#0e8f84}.roadstep.done{background:#e8f7f3;color:#28897c;border-color:#c4e7df}.quiz{border:1px solid #d9e9e6;background:#f3faf8;border-radius:12px;padding:13px;margin:14px 0}.quiz p{margin:0 0 9px!important;font-weight:750;color:#28495a}.answers{display:flex;flex-wrap:wrap;gap:7px}.answer{font-size:12px;padding:8px 11px;border:1px solid #cddde0;background:white;border-radius:9px;color:#2b4660}.answer.chosen.correct{border-color:#32a67e;background:#d9f6e8;color:#17663d}.answer.chosen.wrong{border-color:#e2a28f;background:#fff0e8;color:#a74c36}.feedback{display:none;margin-top:10px;color:#466278;font-size:12px;line-height:1.75}.feedback.show{display:block}.footer{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-top:20px;color:#8691a3;font-size:11px;line-height:1.7}.footer a{color:#597ca4;text-decoration:none}.footer a:hover{text-decoration:underline}.modal{display:none;position:fixed;z-index:10;inset:0;background:rgba(7,18,32,.64);padding:18px;align-items:center;justify-content:center}.modal.open{display:flex}.modalcard{max-width:650px;max-height:88vh;overflow:auto;border-radius:18px;background:white;padding:25px 27px;box-shadow:0 25px 100px #0005;line-height:1.85}.modalcard h2{margin:0 0 13px}.modalcard p{font-size:14px;color:#425572}.modalhead{display:flex;align-items:center;justify-content:space-between;gap:20px}.modalcard .smallbtn{white-space:nowrap}.toast{position:fixed;bottom:23px;left:50%;transform:translateX(-50%) translateY(20px);z-index:20;background:#172d40;color:white;border-radius:11px;padding:11px 16px;box-shadow:0 10px 28px #0003;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;font-size:12px;max-width:90vw}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:1050px){.layout{grid-template-columns:1fr}.stagecanvas{height:460px}.roadmap{grid-template-columns:repeat(14,minmax(0,1fr))}}@media(max-width:600px){.app{padding:12px 10px 22px}.header{gap:10px;align-items:flex-start}.stamp{height:46px;width:46px;font-size:24px;border-radius:12px}.header h1{font-size:17px}.headright{margin-left:auto;flex-direction:column}.smallbtn{padding:7px 10px;font-size:10px}.subtitle{font-size:10px;line-height:1.5}.stagecanvas{height:380px}.stagehead{font-size:11px}.stagetop{padding:12px 13px 7px}.statechip{right:10px;top:10px;padding:9px;min-width:130px}.statechip strong{font-size:17px}.canvashelp{font-size:9px;left:10px;bottom:10px}.legend{font-size:10px;padding:0 12px 12px;gap:8px}.controlcard{padding:13px}.lessonheader{padding:17px}.lessonbody{padding:16px;min-height:auto}.lessonfooter{padding:12px 16px}.chapternav{padding:9px;gap:3px}.tab{font-size:11px;padding:8px}.lessonheader h2{font-size:20px}.roadmap{grid-template-columns:repeat(7,minmax(0,1fr))}.footer{display:block}.footer span{display:block;margin-top:6px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* 流畅演示：进度条和画面内字幕只随播放状态更新，不引发画布重排 */
+.cinematic{margin:15px 0 8px;padding:11px 13px;border:1px solid #daeae5;border-radius:12px;background:#f6fbf9}
+.cinhead,.cinfoot{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cinhead{color:#1f746a;font-size:12px;font-weight:750}.cinhead #cinTime{white-space:nowrap;color:#4d7380;font-size:11px}
+.cinfoot{color:#7b8e94;font-size:10px}.demoseek{accent-color:#13a28d;height:8px;margin:12px 0 8px;display:block}
+.motioncaption{position:absolute;left:50%;bottom:53px;transform:translateX(-50%);text-align:center;max-width:90%;width:max-content;background:rgba(5,18,36,.84);color:#f4fcff;box-shadow:0 7px 22px #0005;border:1px solid rgba(163,232,216,.27);padding:11px 16px;border-radius:11px;font-size:14px;font-weight:750;line-height:1.45;pointer-events:none;white-space:normal;letter-spacing:.2px}
+.stagecanvas{contain:layout paint}
+@media (max-width:600px){.motioncaption{font-size:12px;bottom:48px;max-width:94%;padding:9px 11px}.cinhead{font-size:11px}.cinhead #cinTime{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="stamp">17</div>
+    <div class="headmain"><div class="eyebrow">2025 · 新高考全国Ⅱ卷 · 数学</div><h1>空间翻折 · 流畅动画演示与完整解题</h1><div class="subtitle">15 分解答题 · 云南省适用 · 一节完整的可交互数学微课堂</div></div>
+    <div class="headright"><button class="smallbtn" id="originalBtn">▤ 完整原题</button><button class="smallbtn" id="viewResetBtn">↻ 重置视角</button></div>
+  </header>
+  <main class="layout">
+    <section class="left" aria-label="空间几何交互演示区">
+      <div class="stagecard">
+        <div class="stagetop"><span class="pill">● LIVE GEOMETRY · 真实三维几何关系</span><span class="stagehead" id="sceneSubtitle">原始平面构型</span></div>
+        <div class="stagecanvas" id="sceneWrap"><canvas id="scene" aria-label="可鼠标拖动的空间翻折数学图形">你的浏览器需要支持 Canvas。</canvas>
+          <div class="statechip"><div><span>实际翻折旋转</span><br><strong id="angleInScene">0°</strong></div><hr><div><span>截面内二面角</span><br><strong class="highlight" id="dihedralInScene">180°</strong></div></div>
+          <div class="motioncaption" id="motionCaption" aria-live="off">折痕 EF 固定 · 观察原始几何结构</div><div class="canvashelp">拖动旋转视角　·　滚轮缩放　·　双击复位</div>
+        </div>
+        <div class="legend"><span><i class="dot" style="background:#50b5aa"></i>固定底面 EFCB</span><span><i class="dot" style="background:#e4a35d"></i>翻折面 EFD′A′</span><span><i class="dot" style="background:#aa98fd"></i>辅助证明面</span><span><i class="dot" style="background:#fc737b"></i>求角面 BCD′</span></div>
+      </div>
+      <section class="controlcard" aria-label="动画控制">
+        <div class="controlsA"><button class="primary" id="playBtn">▶ 自动演示</button><button class="secondarybtn" id="prevBtn">← 上一步</button><button class="secondarybtn" id="nextBtn">下一步 →</button><button class="secondarybtn" id="restartBtn">↺ 从头开始</button><select id="speedSel" class="speed" aria-label="播放速度"><option value=".75">0.75×</option><option value="1" selected>1× 播放</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>
+        <div class="cinematic"><div class="cinhead"><span id="cinState">准备就绪 · 点击「自动演示」观看连续动画</span><span id="cinTime" class="mono">00:00 / 01:52</span></div><input type="range" id="demoSeek" class="range demoseek" min="0" max="1000" value="0" step="1" aria-label="自动演示进度，可拖动快进或回放"/><div class="cinfoot"><span>连续时间线 · 14 个数学镜头</span><span id="cinPercent">0%</span></div></div><div class="controlmeta"><span class="smalltitle">自己动手 · 沿 EF 翻折</span><span class="angleval mono" id="foldLabel">0° / 120°</span></div>
+        <input class="range" id="foldSlider" type="range" min="0" max="180" step="1" value="0" aria-label="翻折的实际旋转角度" />
+        <div class="anglelabels"><span>0° · 完全展开</span><span>120° · 题目状态</span><span>180° · 翻到同侧平面</span></div>
+        <div class="controlfooter"><button class="checkchip" id="targetBtn">◎ 定位题设 60°</button><button class="checkchip" id="ghostBtn">◌ 显示翻折前虚线</button><button class="checkchip" id="axesBtn">⊹ 坐标轴</button><button class="checkchip" id="auxBtn">▱ 辅助平面</button><button class="checkchip" id="normBtn">↗ 法向量</button></div>
+        <div class="note" id="stageNote">观察初始平面图形：沿 EF 翻折的只有四边形 EFDA，底面 EFCB 保持不动。</div>
+      </section>
+    </section>
+    <section class="right" aria-label="解题教学区">
+      <nav class="chapternav" aria-label="学习模块"><button class="tab active" data-tab="original">① 读题</button><button class="tab" data-tab="knowledge">② 知识</button><button class="tab" data-tab="strategy">③ 思路</button><button class="tab" data-tab="p1">④ 第一问</button><button class="tab" data-tab="p2">⑤ 第二问</button><button class="tab" data-tab="summary">⑥ 巩固</button></nav>
+      <article class="lessoncard"><div class="lessonheader"><div class="progressrow"><span class="overline" id="lessonTag">原题理解</span><span class="stepcount mono" id="stepCounter">01 / 14</span></div><div class="prog"><span id="progressFill"></span></div><h2 id="lessonTitle">先看清：哪一部分在翻折？</h2><p id="lessonLead"></p></div><div class="lessonbody" id="lessonBody"></div><div class="lessonfooter"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#38a192" stroke-width="1.8"/><path d="M12 11v5M12 7.5v.5" stroke="#38a192" stroke-width="2" stroke-linecap="round"/></svg><p id="lessonHint"></p></div></article>
+      <aside class="sidebarbottom"><div class="sidehead"><b>教学进度 · 点击数字跳转</b><span id="doneMark">已完成 0/14</span></div><div class="roadmap" id="roadmap"></div></aside>
+    </section>
+  </main>
+  <footer class="footer"><span>离线流畅演示完整版 · 无第三方脚本、无在线字体、无 CDN · 所有空间点按真实几何关系实时计算</span><span>题面与参考解答依据：<a href="https://www.jhgk.cn/upload/file/20250611/1749606902734089600.pdf" target="_blank" rel="noopener">2025 新高考Ⅱ卷第17题（第三方整理）</a> · 数学推导已经单独核验</span></footer>
+</div>
+<div class="modal" id="originalModal" role="dialog" aria-modal="true" aria-label="完整题目"><div class="modalcard"><div class="modalhead"><h2>第 17 题 · 完整题目</h2><button class="smallbtn" id="closeModal">✕ 关闭</button></div><p>如图，四边形 <b>ABCD</b> 中，AB ∥ CD，∠DAB = 90°，F 为 CD 中点，E 在 AB 上，EF ∥ AD，AB = 3AD，CD = 2AD。</p><p>将四边形 <b>EFDA</b> 沿 <b>EF</b> 翻折至四边形 <b>EFD′A′</b>，使得平面 EFD′A′ 与平面 EFCB 所成的二面角为 <b>60°</b>。</p><p><b>（1）证明：</b>A′B ∥ 平面 CD′F。</p><p><b>（2）求：</b>平面 BCD′ 与平面 EFD′A′ 所成二面角的正弦值。</p><div class="block teal"><p>说明：图中虚线表示翻折前位置；题设的 60° 是两面在折痕处的<b>内部二面角</b>，不是刚体绕折痕的旋转角 60°。</p></div></div></div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+'use strict';
+// 所有坐标使用真实空间数学模型；页面完全不依赖第三方库。
+const P={E:[0,0,0],F:[1,0,0],B:[0,2,0],C:[1,1,0],A:[0,-1,0],D:[1,-1,0]};
+const H={p:'<span class="point">',e:'</span>'};
+const ui=id=>document.getElementById(id);
+const sq=Math.sqrt(3);
+const v=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]];
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]];
+const mul=(a,s)=>a.map(x=>x*s);
+const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0);
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const norm=a=>Math.hypot(...a);
+const unit=a=>mul(a,1/(norm(a)||1));
+const mean=(...ps)=>ps.reduce((r,p)=>add(r,p),[0,0,0]).map(x=>x/ps.length);
+const htmlMath=(s)=>'<div class="mathline">'+s+'</div>';
+const block=(title,body,type='')=>'<div class="block '+type+'"><h4>'+title+'</h4>'+body+'</div>';
+const para=s=>'<p>'+s+'</p>';
+const formula=(s,klass='')=>'<div class="mathline '+klass+'">'+s+'</div>';
+const originalBody=()=>block('完整条件',para('AB ∥ CD，∠DAB = 90°；F 是 CD 的中点；E 在 AB 上；EF ∥ AD。')+formula('AB = 3AD，CD = 2AD')+para('沿 EF 翻折 EFDA → EFD′A′，最终两面的内二面角为 60°。'),'teal')+block('两道小问',para('（1）证明 <b>A′B ∥ 平面 CD′F</b>。')+para('（2）求 <b>平面 BCD′ 与平面 EFD′A′ 的二面角正弦值</b>。'))+para('先自己辨认：哪些点动了？哪些点始终不动？');
+const quiz=(id,question,choices,correct,explain)=>'<div class="quiz"><p>'+question+'</p><div class="answers">'+choices.map((t,i)=>'<button class="answer" data-quiz="'+id+'" data-i="'+i+'" data-correct="'+correct+'">'+t+'</button>').join('')+'</div><div class="feedback" id="fb-'+id+'">'+explain+'</div></div>';
+const steps=[
+{tab:'original',tag:'原题理解 · STEP 01',title:'先看清：哪一部分在翻折？',lead:'先读图，而不是马上列向量。分清固定部分和运动部分，后面的空间关系就不会混乱。',fold:0,scene:'初始平面：EFCB 固定，EFDA 待翻折',body:()=>originalBody(),hint:'请先拖动 3D 图形换个视角：A、E、B 共线，D、F、C 共线。折痕 EF 上的 E、F 不动。',note:'初始共面：固定面 EFCB（青色），待翻折面 EFDA（橙色）。折痕 EF 保持不动。'},
+{tab:'original',tag:'观察条件 · STEP 02',title:'先把长度比例还原成图形',lead:'规范化 AD = 1，找到隐藏的矩形，这是后续证明和坐标建系的起点。',fold:0,scene:'长度关系：矩形 AEFD 和梯形 EFCB',body:()=>block('为什么 AEFD 是矩形？',para('由 AB ∥ CD，EF ∥ AD，又 E∈AB、F,D∈CD，得到 AE ∥ FD，EF ∥ AD，故 AEFD 为平行四边形。再由 ∠DAB=90° 知 AE ⟂ AD，故 AEFD 为矩形。'))+block('设 AD = 1',formula('AD = EF = AE = FD = 1')+formula('AB = 3，CD = 2，FC = FD = 1')+formula('EB = AB − AE = 2')+para('这些等式在翻折前就可以求出。'),'teal')+quiz('q1','下列哪一条线段长为 2？',['EF','EB','FD'],1,'因为 AB=3，AE=1，因此 EB=3−1=2。'),hint:'“先找矩形、再找长度”是本题最早的突破点，也能防止后续坐标写错。',note:'可以观察 A、E、B 与 D、F、C 的共线关系。我们把 AD 设为 1，不会影响角度和最终正弦值。'},
+{tab:'knowledge',tag:'基础知识 · STEP 03',title:'知识①：翻折有哪些不变量？',lead:'折纸改变点的位置，但不改变折痕及翻折部分的形状、长度、内部角度。',fold:60,scene:'观察旋转过程：只移动 A、D',ghost:true,body:()=>block('绕 EF 翻折时',para('折痕 E、F 的空间位置不变；A、D 分别运动到 A′、D′；四边形 EFDA 保持刚性。')+formula('EA′ = FD′ = 1，A′D′ = EF = 1')+formula('EA′ ∥ FD′，EF ⟂ EA′')+para('始终不能直接认为 A′、E、B 共线或 D′、F、C 共线。'),'teal')+block('动画观察',para('调节左侧翻折滑块，看 A′、D′ 绕 EF 运动。灰色虚线可保留翻折前的位置作为参照。')),hint:'一定记住：移动的是四边形上的点 A、D，而不是把整张图一起转动。',note:'不变量：EA′、FD′、A′D′ 的长度保持不变；A′E ∥ D′F。动态翻折不改变这些关系。'},
+{tab:'knowledge',tag:'基础知识 · STEP 04',title:'知识②：二面角如何变成一个平面角？',lead:'最重要的几何操作：在折痕 EF 的垂直截面内观察两条射线 EA′、EB。',fold:120,scene:'截面 ∠A′EB = 60° · 实际翻折量为 120°',angle:true,body:()=>block('二面角的平面角',para('EF ⟂ EA′（矩形翻折后仍成立），且 EF ∥ AD ⟂ AB，从而 EF ⟂ EB。')+para('因此在垂直于 EF 的截面内，两射线 EA′、EB 形成的 <b>∠A′EB</b> 就是所需二面角的平面角。')+formula('∠A′EB = 60°'),'teal')+block('特别注意：120° ≠ 60°',para('初始时 EA 指向 EB 的反方向。若刚体绕 EF 旋转 <b>φ</b>，则截面里的内角为 <b>180° − φ</b>。')+formula('φ = 180° − 60° = 120°','green')+para('所以滑块应移到 120°，才能得到题设要求的 60° 内二面角。'),'orange')+quiz('q2','要达到题目中的内部二面角 60°，需要实际翻折多少？',['60°','90°','120°'],2,'∠A′EB=180°−φ，因此 φ=120°。'),hint:'不要把平面所成的内二面角与刚体翻折的旋转量混为一谈。',note:'观察左上角两个不同读数：实际翻折旋转量 120°，截面内二面角 60°。'},
+{tab:'strategy',tag:'解题策略 · STEP 05',title:'先定路线，再开始证明',lead:'第一问用几何平行关系，第二问用空间向量。先解释为什么使用这种方法。',fold:120,scene:'目标拆分：平行关系 + 法向量求角',aux:true,body:()=>block('第一问：目标是“线 ∥ 面”',para('直接看 A′B 与平面 CD′F 不容易发现关系。不妨先找一个包含 A′B 的平面 A′EB，再证明这个平面与 CD′F 平行。')+formula('A′B ⊂ 平面 A′EB')+formula('平面 A′EB ∥ 平面 CD′F')+formula('⇒ A′B ∥ 平面 CD′F'),'teal')+block('第二问：目标是“二面角的正弦值”',para('对于复杂的空间夹角，直接找平面角往往困难。可以选择自然坐标系，分别求两个平面的法向量，再由向量夹角求正弦值。'),'violet')+para('你将看到：<b>几何法负责发现结构，向量法负责计算角度。</b>'),hint:'解题时先想“目标是什么—哪条定理能连到目标—现在缺少什么条件”，再决定要构造什么。',note:'蓝紫色辅助平面 x=0 与 x=1，正好分别包含 A′B 和 C、D′、F。'},
+{tab:'p1',tag:'证明第（1）问 · STEP 06',title:'发现两组对应的平行线',lead:'证明两个平面平行，需要找各自平面内的两条相交直线，并建立对应平行。',fold:120,scene:'第一问：突出 A′E ∥ D′F 和 EB ∥ FC',aux:true,edges:true,body:()=>block('第一组：静止底面中的线段',formula('EB ∥ FC')+para('因为 EB 在 AB 上，FC 在 CD 上，而 AB ∥ CD。'))+block('第二组：翻折后的矩形对应边',formula('A′E ∥ D′F')+para('原矩形 AEFD 的对边 AE ∥ FD；作为刚体绕 EF 翻折以后，对应的 A′E 与 D′F 仍然平行。'),'teal')+block('为什么两组足够？',para('在平面 A′EB 内，A′E 与 EB 相交于 E；在平面 D′FC 内，D′F 与 FC 相交于 F。恰好满足判定两个平面平行所需的相交直线条件。')),hint:'看高亮线：两组线不仅方向平行，而且分别位于两个待证平行的平面内。',note:'观察平面 A′EB（x=0）与平面 CD′F（x=1）：高亮边对应平行。'},
+{tab:'p1',tag:'证明第（1）问 · STEP 07',title:'由“线线平行”升级到“面面平行”',lead:'套用面面平行的判定定理，必须明确两条线在本平面内相交。',fold:120,scene:'辅助平面 x=0 与 x=1 相互平行',aux:true,body:()=>block('面面平行的判定定理',para('一个平面内两条相交直线，分别平行于另一个平面内的两条相交直线，则这两个平面平行。'))+block('在本题中',formula('A′E ∥ D′F，EB ∥ FC')+formula('A′E ∩ EB = E，D′F ∩ FC = F')+formula('∴ 平面 A′EB ∥ 平面 CD′F','green'),'teal')+para('可在左侧旋转视角，从侧面看两片蓝紫色透明平面更直观。'),hint:'“有两对平行直线”不是充分的口头说明，还要指出它们在两个平面内分别相交。',note:'此时两片辅助平面互相平行，但它们本身不是题目原有的两片纸，而是为了证明构造出来的。'},
+{tab:'p1',tag:'证明第（1）问 · STEP 08',title:'收尾：得到所求的线面平行',lead:'已经找到包含目标直线的平面，最后只需调用面面平行的性质。',fold:120,scene:'最终高亮 A′B ∥ 平面 CD′F',aux:true,finalLine:true,body:()=>block('完整规范证明',para('因为 AB ∥ CD，E∈AB，F、C∈CD，所以 EB ∥ FC。因为翻折保持四边形 EFDA 的对应边平行，所以 A′E ∥ D′F。')+para('又 A′E 与 EB 相交于 E，D′F 与 FC 相交于 F，故平面 A′EB ∥ 平面 CD′F。')+para('由于 A′B ⊂ 平面 A′EB，因此：')+formula('A′B ∥ 平面 CD′F','large green'),'teal')+quiz('q3','为何不能只凭 A′E ∥ D′F 就直接得出 A′B ∥ 平面 CD′F？',['缺少将 A′B 与目标平面联系起来的论证','因为 A′E 不平行 D′F'],0,'需要通过构造包含 A′B 的辅助平面，并证明两个平面平行，形成完整推理链。'),hint:'第一问的核心思维是“搭桥”：线面平行不直接好证，就先证明包含它的两个平面平行。',note:'粗绿色线 A′B 完全落在 x=0 平面中；目标平面 CD′F 则在 x=1，故两者平行。'},
+{tab:'p2',tag:'第二问知识 · STEP 09',title:'知识③：用法向量计算平面夹角',lead:'一条法向量同时垂直于平面内两条相交的方向向量，可作为该平面的方向代表。',fold:120,scene:'显示两个平面的法向量',normals:true,redface:true,body:()=>block('法向量的定义',para('若向量 n 垂直于平面内的两条不平行直线的方向向量，则 n 是这个平面的一个法向量。')+formula('n · u = 0，n · v = 0'))+block('两平面夹角',para('设两个平面的法向量为 n₁、n₂，则它们所成锐角或直角 θ 的余弦可按下式计算：')+formula('cos θ = |n₁ · n₂| / (|n₁| |n₂|)')+formula('sin θ = √(1 − cos² θ)'),'violet')+para('因为题目只求 <b>正弦值</b>，即使法向量方向取反，也不影响计算。'),hint:'看两支从平面内指向空间的箭头，它们分别与所在平面垂直，而不是沿平面延伸。',note:'法向量是“垂直于平面”的向量。两个法向量的夹角可以转换为两个平面的夹角信息。'},
+{tab:'p2',tag:'第二问计算 · STEP 10',title:'建立坐标系：让条件变成数字',lead:'选 EF 为 x 轴、EB 为 y 轴，底面为 z=0，所有坐标都能从已经求得的长度读出。',fold:120,scene:'显示坐标轴和所有关键顶点',axes:true,body:()=>block('选 E 为原点，令 AD = 1',formula('E(0,0,0)，F(1,0,0)')+formula('B(0,2,0)，C(1,1,0)'))+block('由 60° 平面角求 A′、D′ 的高度',para('因为 EA′=1 且 ∠A′EB=60°，所以 A′ 沿 y 轴的投影长度为 cos60°=1/2，沿 z 轴的高度为 sin60°=√3/2。')+formula('A′(0, 1/2, √3/2)')+formula('D′(1, 1/2, √3/2)'),'teal')+para('注意 C 的 y 坐标是 1，而不是 2；F 是 CD 的中点，CF=1。'),hint:'请将左侧“坐标轴”打开，从与 z 轴接近的视角查看两个新点的高度。',note:'题设状态：A′(0,½,√3/2)，D′(1,½,√3/2)。坐标原点 E；x 沿 EF，y 沿 EB，z 为高度。'},
+{tab:'p2',tag:'第二问计算 · STEP 11',title:'求平面 EFD′A′ 的法向量 n₁',lead:'先选择这个平面内两条不平行的方向向量，然后让未知向量与二者都垂直。',fold:120,scene:'显示平面 EFD′A′ 的法向量 n₁',axes:true,n1:true,body:()=>block('选择平面内的两个方向',formula('EF = (1, 0, 0)')+formula('EA′ = (0, 1/2, √3/2)'))+block('设 n₁ = (a, b, c)',formula('n₁ · EF = a = 0')+formula('n₁ · EA′ = b/2 + √3c/2 = 0')+para('取 b = √3、c = −1，可得：')+formula('n₁ = (0, √3, −1)','large green'),'teal')+para('检验：n₁·EF=0，n₁·EA′=√3/2−√3/2=0。'),hint:'一个平面的法向量不是唯一的，乘上任意非零常数还是法向量。',note:'绿色箭头 n₁ 垂直于橙色翻折面。公式选用 n₁=(0,√3,−1)。'},
+{tab:'p2',tag:'第二问计算 · STEP 12',title:'求平面 BCD′ 的法向量 n₂',lead:'保持同样的方法：取 BC 和 BD′，列出两条垂直条件，再解出法向量。',fold:120,scene:'高亮平面 BCD′，同时显示 n₁、n₂',axes:true,normals:true,redface:true,body:()=>block('求平面内方向向量',formula('BC = C − B = (1, −1, 0)')+formula('BD′ = D′ − B = (1, −3/2, √3/2)'))+block('设 n₂ = (a, b, c)',formula('n₂ · BC = a − b = 0')+formula('n₂ · BD′ = a − 3b/2 + √3c/2 = 0')+para('由 a=b，再取 a=b=√3、c=1，得到：')+formula('n₂ = (√3, √3, 1)','large green'),'violet')+para('检验：n₂·BC=0，n₂·BD′=√3−3√3/2+√3/2=0。'),hint:'这里 n₁、n₂ 方向可以反过来取；由于最终会取绝对值，二面角正弦值不改变。',note:'红色透明三角形是平面 BCD′；绿色箭头 n₁ 和粉红色箭头 n₂ 分别垂直于各自平面。'},
+{tab:'p2',tag:'第二问计算 · STEP 13',title:'点积 → 夹角 → 最终正弦值',lead:'现在把两个已经求出的法向量代入夹角公式，最后用勾股关系得到正弦值。',fold:120,scene:'计算完成：sin θ = √42 / 7',axes:true,normals:true,redface:true,body:()=>block('先计算点积与模',formula('n₁ = (0, √3, −1)，n₂ = (√3, √3, 1)')+formula('n₁ · n₂ = 0 + 3 − 1 = 2')+formula('|n₁| = √(3+1) = 2')+formula('|n₂| = √(3+3+1) = √7'))+block('代入两平面夹角公式',formula('cos θ = 2 / (2√7) = 1/√7')+formula('sin²θ = 1 − 1/7 = 6/7')+formula('sin θ = √(6/7) = √42/7','large green'),'teal')+para('取正平方根，因为二面角的正弦非负。'),hint:'这一问的关键不是记住答案，而是理解：“给平面找两条方向 → 找法向量 → 用点积求角”。',note:'第二问答案：sin θ = √42/7 ≈ 0.92582。图中箭头与透明平面一一对应。'},
+{tab:'summary',tag:'总结与自测 · STEP 14',title:'把一道大题，浓缩成两条路线',lead:'完整题目已经讲完。现在检查自己能否说出两个关键突破口，而不是只背结论。',fold:120,scene:'知识路线与两问答案总览',aux:true,redface:true,body:()=>block('第一问：几何证明路线',formula('两组对应线平行 → 两面平行 → 线面平行')+formula('A′B ∥ 平面 CD′F','green'),'teal')+block('第二问：空间向量路线',formula('建坐标系 → 两个法向量 → 点积求夹角')+formula('sin θ = √42/7','green'),'violet')+quiz('q4','第一问最关键的“中间桥梁”是什么？',['证明两个辅助平面平行','先求 A′B 的长度','直接算出二面角'],0,'正确：A′B 落在平面 A′EB 中，先证平面 A′EB ∥ 平面 CD′F。')+quiz('q5','第二问中计算法向量时，为什么要列两个点积为 0？',['为了让法向量同时垂直于平面内两条不平行方向','因为每个平面有两条边'],0,'正确：法向量垂直于平面，需与其中两条不平行的方向向量都垂直。')+block('最容易失误的三件事',para('① 把刚体旋转 120°误作内部二面角 120°；② 只凭动画判断平行，不写严格证明；③ 坐标写错后没有检查法向量是否真的与面内两个方向垂直。'),'orange'),hint:'如果能独立重述第一问的“搭桥思路”，并自己算出 n₁、n₂，你才真正掌握了这题。',note:'恭喜完成！使用“↺ 从头开始”可以复习整堂课，或点击教学进度中的任意数字回看。'}
+];
+const cv=ui('scene'),cx=cv.getContext('2d');
+let W=0,HH=0,DPR=1;
+const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+const easing=t=>t*t*(3-2*t);
+const blend=(a,b,t)=>a+(b-a)*t;
+const rad=Math.PI/180;
+function points(){const r=fold*rad;return {...P,Ap:[0,-Math.cos(r),Math.sin(r)],Dp:[1,-Math.cos(r),Math.sin(r)]};}
+function calcCamera(){const dir=[Math.cos(pitch)*Math.cos(yaw),Math.cos(pitch)*Math.sin(yaw),Math.sin(pitch)];const R=[-Math.sin(yaw),Math.cos(yaw),0],U=cross(dir,R);return {dir,R,U};}
+let camera;
+function project(p){const c=[.5,.42,.39],q=v(p,c),sx=dot(q,camera.R),sy=dot(q,camera.U),dz=dot(q,camera.dir);const perspective=7.4/(7.4-dz);const scale=Math.min(W/4.1,HH/3.35)*zoom*perspective;return [W/2+sx*scale,HH*.53-sy*scale,dz,scale];}
+function rgb(hex,a){let h=hex.replace('#','');return 'rgba('+parseInt(h.slice(0,2),16)+','+parseInt(h.slice(2,4),16)+','+parseInt(h.slice(4,6),16)+','+a+')';}
+function line(a,b,color='#c1d3e5',width=2,dash=[],alpha=1){let p=project(a),q=project(b);cx.save();cx.globalAlpha*=alpha;cx.strokeStyle=color;cx.lineWidth=width;cx.lineCap='round';cx.setLineDash(dash);cx.beginPath();cx.moveTo(p[0],p[1]);cx.lineTo(q[0],q[1]);cx.stroke();cx.restore();}
+function poly(ps,fill,stroke,alpha=.45,w=1){cx.save();cx.globalAlpha*=alpha;cx.beginPath();ps.forEach((p,i)=>{const t=project(p);i?cx.lineTo(t[0],t[1]):cx.moveTo(t[0],t[1]);});cx.closePath();cx.fillStyle=fill;cx.fill();if(stroke){cx.lineWidth=w;cx.strokeStyle=stroke;cx.stroke()}cx.restore();}
+function point(p,label,color='#eaf3fe',shift=[9,-9]){const a=project(p);cx.save();cx.beginPath();cx.fillStyle='#102035';cx.arc(a[0],a[1],5.3,0,Math.PI*2);cx.fill();cx.beginPath();cx.fillStyle=color;cx.arc(a[0],a[1],3.5,0,Math.PI*2);cx.fill();cx.shadowBlur=0;cx.fillStyle='#f4f8ff';cx.textAlign='left';cx.font='700 14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif';cx.fillText(label,a[0]+shift[0],a[1]+shift[1]);cx.restore();}
+function arrow(a,d,color,label){let dn=unit(d),b=add(a,mul(dn,.76)),s=project(a),e=project(b);cx.save();cx.strokeStyle=color;cx.fillStyle=color;cx.lineWidth=3;cx.lineCap='round';cx.beginPath();cx.moveTo(s[0],s[1]);cx.lineTo(e[0],e[1]);cx.stroke();let th=Math.atan2(e[1]-s[1],e[0]-s[0]);cx.beginPath();cx.moveTo(e[0],e[1]);cx.lineTo(e[0]-12*Math.cos(th-.47),e[1]-12*Math.sin(th-.47));cx.lineTo(e[0]-12*Math.cos(th+.47),e[1]-12*Math.sin(th+.47));cx.closePath();cx.fill();cx.fillStyle='#fff';cx.font='700 13px sans-serif';cx.fillText(label,e[0]+9,e[1]-10);cx.restore();}
+function polygonSort(items){items.sort((a,b)=>{const avg=ps=>ps.reduce((s,p)=>s+dot(v(p,[.5,.42,.39]),camera.dir),0)/ps.length;return avg(a.pts)-avg(b.pts)});items.forEach(f=>poly(f.pts,f.fill,f.stroke,f.alpha,f.width||1));}
+let backdrop=null;
+function cacheBackdrop(){
+  const el=document.createElement('canvas');el.width=cv.width;el.height=cv.height;
+  const c=el.getContext('2d');c.setTransform(DPR,0,0,DPR,0,0);
+  const grad=c.createRadialGradient(W*.46,HH*.4,40,W*.5,HH*.5,Math.max(W,HH)*.77);
+  grad.addColorStop(0,'#23344b');grad.addColorStop(.64,'#15233a');grad.addColorStop(1,'#0e192b');
+  c.fillStyle=grad;c.fillRect(0,0,W,HH);backdrop=el;
+}
+function background(){
+  if(backdrop)cx.drawImage(backdrop,0,0,W,HH);else{cx.fillStyle='#15233a';cx.fillRect(0,0,W,HH)}
+  for(let i=-2;i<=3;i++){
+    line([i,-2,0],[i,3.3,0],'rgba(147,173,204,.12)',.65);
+    line([-2,i,0],[3,i,0],'rgba(147,173,204,.12)',.65);
+  }
+}
+function drawArc(phi){
+  if(phi<4)return;
+  const alpha=Math.PI-phi*rad;
+  cx.save();cx.beginPath();
+  for(let i=0;i<=38;i++){
+    const t=alpha*i/38, p=project([0,.38*Math.cos(t),.38*Math.sin(t)]);
+    if(i===0)cx.moveTo(p[0],p[1]);else cx.lineTo(p[0],p[1]);
+  }
+  cx.strokeStyle='#79e3c4';cx.lineWidth=3;cx.stroke();
+  const c=project([0,.49*Math.cos(alpha/2),.49*Math.sin(alpha/2)]);
+  cx.fillStyle='#b1fbe4';cx.font='700 12px sans-serif';cx.fillText((180-phi).toFixed(0)+'°',c[0]+4,c[1]-4);cx.restore();
+}
+function fade(alpha,fn){if(alpha<=.001)return;cx.save();cx.globalAlpha*=Math.min(1,alpha);fn();cx.restore();}
+function segment(a,b,q,color,width){if(q<=0)return;line(a,add(a,mul(v(b,a),Math.min(1,q))),color,width)}
+function renderScene(){
+if(!cx||!W||!HH)return;
+camera=calcCamera();background();const p=points(),st=steps[index];
+const o=visibility;
+const aux=Math.max(o.aux,userAux?1:0), redface=o.redface;
+const ghost=Math.max(o.ghost,userGhost?1:0),axes=Math.max(o.axes,userAxes?1:0);
+const n1=Math.max(o.n1,userNormals?1:0),n2=Math.max(o.n2,userNormals?1:0);
+const edges=o.edges,finalLine=o.finalLine;
+const safeFold=(fold>1.2&&fold<178.8);
+let polys=[
+{pts:[p.E,p.F,p.C,p.B],fill:'#4bc1b1',stroke:'#55bbae',alpha:.23},
+{pts:[p.E,p.F,p.Dp,p.Ap],fill:'#f0b46d',stroke:'#eab77b',alpha:.38}];
+if(safeFold&&aux>.005){polys.push({pts:[p.Ap,p.E,p.B],fill:'#9b91f6',stroke:'#b4a5ff',alpha:.25*aux},{pts:[p.F,p.C,p.Dp],fill:'#af94f7',stroke:'#b4a5ff',alpha:.29*aux});}
+if(safeFold&&redface>.005)polys.push({pts:[p.B,p.C,p.Dp],fill:'#ff7d82',stroke:'#f78995',alpha:.31*redface});
+polygonSort(polys);
+if(ghost>.005&&fold>1.1)fade(ghost,()=>{
+line(p.A,p.E,'#adb8ca',1.4,[5,5],.64);line(p.A,p.D,'#adb8ca',1.4,[5,5],.64);line(p.D,p.F,'#adb8ca',1.4,[5,5],.64);
+point(p.A,'A','#9aacc7',[7,9]);point(p.D,'D','#9aacc7',[7,13]);});
+// 前两幕采用渐进描边，真实表达“原始图形是如何构成的”。
+const trace=manualFoldOverride?1:clamp(o.trace,0,1);
+fade(Math.min(1,.25+.75*trace),()=>{
+segment(p.E,p.F,Math.min(1,trace*2.1),'#b8f4d9',3.6);
+segment(p.E,p.B,Math.min(1,Math.max(0,trace-.08)*1.55),'#59c8ba',2.15);
+segment(p.F,p.C,Math.min(1,Math.max(0,trace-.24)*1.75),'#59c8ba',2.15);
+segment(p.C,p.B,Math.min(1,Math.max(0,trace-.38)*1.75),'#59c8ba',2.15);
+segment(p.E,p.Ap,Math.min(1,trace*1.9),'#f7b775',2.5);
+segment(p.F,p.Dp,Math.min(1,Math.max(0,trace-.15)*1.8),'#f7b775',2.5);
+segment(p.Ap,p.Dp,Math.min(1,Math.max(0,trace-.4)*1.9),'#f7b775',2.5);
+});
+if(index<=1&&fold<1.2)fade(.8,()=>{segment(p.A,p.E,trace,'#ffc781',2.5);segment(p.D,p.F,trace,'#ffc781',2.5);segment(p.A,p.D,trace,'#ffc781',2.5);});
+if(edges>.005)fade(edges,()=>{
+  line(p.E,p.B,'#8de5db',4.3);line(p.F,p.C,'#8de5db',4.3);
+  line(p.Ap,p.E,'#ddc5ff',4.1);line(p.Dp,p.F,'#ddc5ff',4.1);
+});
+if(finalLine>.005)fade(finalLine,()=>{
+  segment(p.Ap,p.B,clamp(finalLine*1.4,0,1),'#9bf4c0',5);
+});
+if(redface>.005&&safeFold)fade(redface,()=>{line(p.B,p.Dp,'#ff9794',2.2);line(p.C,p.Dp,'#ff9794',2.2);});
+if(axes>.005)fade(axes,()=>{
+  segment(p.E,[1.6,0,0],axes,'#f79090',2.2);
+  segment(p.E,[0,2.6,0],axes,'#73dfa4',2.2);
+  segment(p.E,[0,0,1.7],axes,'#8bb6ff',2.2);
+  [['x',[1.65,0,0],'#f59090'],['y',[0,2.7,0],'#77e2ae'],['z',[0,0,1.8],'#8db5fd']].forEach(z=>{
+    if(axes<.7)return;const a=project(z[1]);cx.fillStyle=z[2];cx.font='bold 15px monospace';cx.fillText(z[0],a[0]+4,a[1]-4);
+  });
+});
+if(o.arc>.005&&safeFold)fade(o.arc,()=>drawArc(fold));
+if((n1>.005||n2>.005)&&safeFold){
+  const a=mean(p.E,p.F,p.Ap,p.Dp),b=mean(p.B,p.C,p.Dp);
+  // 对应本题选取的法向量；对所有翻折量持续保持垂直。
+  let rr=fold*rad,normal1=[0,Math.sin(rr),Math.cos(rr)];
+  let BC=v(p.C,p.B),BD=v(p.Dp,p.B),normal2=cross(BC,BD);
+  if(n1>.005)fade(n1,()=>arrow(a,normal1,'#b0ffc7','n₁'));
+  if(n2>.005)fade(n2,()=>arrow(b,normal2,'#ff97a4','n₂'));
+}
+point(p.E,'E','#c4f7ef',[7,13]);point(p.F,'F','#c4f7ef',[8,15]);point(p.B,'B','#eff8ff',[9,12]);point(p.C,'C','#eff8ff',[9,-10]);
+if(fold>1.3){point(p.Ap,'A′','#fcd79d',[-24,-9]);point(p.Dp,'D′','#fcd79d',[7,-10]);}
+else{point(p.A,'A','#fcd79d',[-15,11]);point(p.D,'D','#fcd79d',[8,11]);}
+}
+// 14 幕连贯演示，所有镜头由全局时间定位，不受帧率影响，也不会发生逐帧指数缓动带来的拖尾。
+const KEYS=['trace','ghost','aux','edges','finalLine','redface','axes','n1','n2','arc'];
+const K=(fold,yaw,pitch,zoom,flags={})=>({fold,yaw,pitch,zoom,...Object.fromEntries(KEYS.map(k=>[k,flags[k]||0]))});
+const frames=[
+K(0,-1.03,.45,1.01,{trace:0}),
+K(0,-.82,.55,1.10,{trace:1}),
+K(0,-1.17,.49,1.12,{trace:1,edges:1}),
+K(67,-1.03,.52,1.1,{trace:1,ghost:1,edges:.25}),
+K(120,-.94,.43,1.1,{trace:1,ghost:.75,arc:1}),
+K(120,-1.23,.51,1.06,{trace:1,aux:1,ghost:.1,arc:.12}),
+K(120,-.79,.45,1.12,{trace:1,aux:1,edges:1}),
+K(120,-.22,.33,1.06,{trace:1,aux:1,edges:.4}),
+K(120,-.86,.49,1.12,{trace:1,aux:1,finalLine:1}),
+K(120,-1.22,.6,1.08,{trace:1,redface:1,n1:.35,n2:.35,finalLine:.12}),
+K(120,-1.02,.62,1.12,{trace:1,axes:1,redface:.35}),
+K(120,-1.12,.54,1.14,{trace:1,axes:1,n1:1}),
+K(120,-.82,.55,1.1,{trace:1,axes:1,n1:1,n2:1,redface:1}),
+K(120,-1.16,.44,1.07,{trace:1,axes:.55,n1:1,n2:1,redface:1}),
+K(120,-.82,.54,1.01,{trace:1,aux:.77,finalLine:1,n1:.9,n2:.9,redface:.70})
+];
+const durations=[6.3,6.3,9.0,9.0,7.0,8.3,7.1,7.4,8.1,7.5,7.9,8.0,8.2,8.2];
+const starts=[0];for(const d of durations)starts.push(starts[starts.length-1]+d);
+const totalTime=starts[starts.length-1];
+const captions=[
+['认识原图：固定底面与活动面','沿折痕 EF 描出两部分图形'],
+['发现矩形 AEFD','由 AD = 1 得到 EB = 2'],
+['翻折开始：E、F 始终不动','观察 A、D 的真实空间轨迹'],
+['继续翻折到题设位置','刚体旋转 120°，内二面角 60°'],
+['解题策略：先搭起辅助平面','紫色两面帮助证明线面平行'],
+['第一组 EB ∥ FC','第二组 A′E ∥ D′F'],
+['两对相交直线分别平行','推出两个辅助平面平行'],
+['把目标直线 A′B 标出来','因此 A′B ∥ 平面 CD′F'],
+['第二问：转向平面夹角','让两个法向量逐渐出现'],
+['建立三维坐标系','位置由边长与 60° 确定'],
+['找到第一个法向量 n₁','n₁ ⟂ EF，且 n₁ ⟂ EA′'],
+['再找到第二个法向量 n₂','n₂ ⟂ BC，且 n₂ ⟂ BD′'],
+['两个法向量求夹角','sin θ = √42 / 7'],
+['回顾：几何证明 + 向量计算','完整结论已显示，可暂停回顾']
+];
+let demoTime=0,playing=false,lastFrame=0,speed=1,index=0,fold=0,target=0;
+let yaw=-1.03,pitch=.45,zoom=1,drag=null;
+let userGhost=false,userAxes=false,userAux=false,userNormals=false;
+let visibility={...frames[0]};
+let manualFoldOverride=false, smoothJoin=null;
+let dirty=true, lastStatusUpdate=-1, lastDisplayedAngle=-1;
+// 注：沿用上面已初始化的 cv/cx/points 数学模型与 steps 教学资料。
+function resize(){
+ const r=cv.getBoundingClientRect();const newDpr=Math.min(window.devicePixelRatio||1,1.5);
+ if(W===r.width&&HH===r.height&&DPR===newDpr)return;
+ DPR=newDpr;W=r.width;HH=r.height;cv.width=Math.round(W*DPR);cv.height=Math.round(HH*DPR);
+ cx.setTransform(DPR,0,0,DPR,0,0);cacheBackdrop();dirty=true;
+}
+function locate(t){
+ t=clamp(t,0,totalTime);
+ let i=starts.length-2;
+ for(let j=0;j<durations.length;j++){if(t<starts[j+1]-1e-7){i=j;break;}}
+ return {i,t:clamp((t-starts[i])/durations[i],0,1)};
+}
+function formatTime(t){t=Math.floor(t+1e-6);return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')}
+function buttonState(){ui('playBtn').textContent=playing?'Ⅱ 暂停演示':demoTime>=totalTime-1e-4?'↺ 重新演示':demoTime>0?'▶ 继续演示':'▶ 自动演示';ui('cinState').textContent=playing?'● 正在流畅播放 · 第 '+(index+1)+' 幕 / 14':demoTime>=totalTime-1e-4?'✓ 全部动画演示完成':demoTime>0?'Ⅱ 已暂停 · 点击继续':'准备就绪 · 点击「自动演示」观看连续动画';}
+function setStep(i){
+ index=clamp(i,0,steps.length-1);const s=steps[index];
+ activeTab(s.tab);ui('lessonTag').textContent=s.tag;
+ ui('stepCounter').textContent=String(index+1).padStart(2,'0')+' / '+String(steps.length).padStart(2,'0');
+ ui('lessonTitle').textContent=s.title;ui('lessonLead').textContent=s.lead;
+ ui('lessonBody').innerHTML=s.body();ui('lessonHint').textContent=s.hint;
+ ui('sceneSubtitle').textContent=s.scene;ui('stageNote').textContent=s.note;
+ ui('progressFill').style.width=((index+1)/steps.length*100)+'%';renderRoad();activeTab(s.tab);
+ syncToggle();dirty=true;
+}
+function activeTab(tab){document.querySelectorAll('[data-tab]').forEach(el=>el.classList.toggle('active',el.dataset.tab===tab));}
+function renderRoad(){
+ ui('roadmap').innerHTML=steps.map((s,i)=>'<button class="roadstep '+(index===i?'active':i<index?'done':'')+'" data-step="'+i+'" title="'+s.title+'">'+(i+1)+'</button>').join('');
+ ui('doneMark').textContent='进度 '+(index+1)+'/14';
+}
+function syncToggle(){ui('ghostBtn').classList.toggle('on',userGhost);ui('axesBtn').classList.toggle('on',userAxes);ui('auxBtn').classList.toggle('on',userAux);ui('normBtn').classList.toggle('on',userNormals);}
+function toast(text){const el=ui('toast');el.textContent=text;el.classList.add('show');clearTimeout(toast._timeout);toast._timeout=setTimeout(()=>el.classList.remove('show'),2300);}
+function updateAngle(){
+ const a=Math.round(fold);if(a===lastDisplayedAngle)return;
+ lastDisplayedAngle=a;ui('foldSlider').value=a;ui('foldLabel').textContent=a+'° / 120°';ui('angleInScene').textContent=a+'°';
+ ui('dihedralInScene').textContent=(180-a)+'°';
+}
+let lastCaption='';
+function seekTo(t,updateDom=true){
+ manualFoldOverride=false;
+ demoTime=clamp(t,0,totalTime);const {i,t:p}=locate(demoTime);
+ if(index!==i||updateDom&&ui('lessonBody').innerHTML==='')setStep(i);
+ const eased=easing(p),a=frames[i],b=frames[i+1];
+ fold=blend(a.fold,b.fold,eased);yaw=blend(a.yaw,b.yaw,eased);
+ pitch=blend(a.pitch,b.pitch,eased);zoom=blend(a.zoom,b.zoom,eased);
+ for(const k of KEYS)visibility[k]=blend(a[k],b[k],eased);
+ updateAngle();
+ const caption=captions[i][p<.48?0:1];if(lastCaption!==caption){ui('motionCaption').textContent=caption;lastCaption=caption;}
+ const n=Math.floor(demoTime*10);
+ if(n!==lastStatusUpdate||updateDom){
+   ui('demoSeek').value=Math.round(demoTime/totalTime*1000);
+   ui('cinTime').textContent=formatTime(demoTime)+' / '+formatTime(totalTime);
+   ui('cinPercent').textContent=Math.round(demoTime/totalTime*100)+'%';lastStatusUpdate=n;
+ }
+ dirty=true;
+}
+function pause(manual=false){playing=false;buttonState();if(manual)dirty=true;}
+function togglePlay(){
+ if(playing){pause();return;}
+ if(demoTime>=totalTime-1e-4)seekTo(0);
+ const {i,t:p}=locate(demoTime),ea=easing(p),a=frames[i],b=frames[i+1];
+ smoothJoin={start:performance.now(),fold:fold-blend(a.fold,b.fold,ea),yaw:yaw-blend(a.yaw,b.yaw,ea),pitch:pitch-blend(a.pitch,b.pitch,ea),zoom:zoom-blend(a.zoom,b.zoom,ea)};
+ playing=true;lastFrame=0;buttonState();dirty=true;
+}
+function setFold(v,manual=true){
+ if(manual)pause(true);
+ fold=clamp(v,0,180);manualFoldOverride=manual;updateAngle();dirty=true;
+ if(manual){const a=Math.round(fold);const caption='手动翻折 '+a+'° · 内二面角 '+(180-a)+'°';ui('motionCaption').textContent=caption;lastCaption=caption;}
+}
+function tick(t){
+ const dt=lastFrame?Math.min((t-lastFrame)/1000,.075):0;lastFrame=t;
+ if(playing){
+   seekTo(demoTime+dt*speed,false);
+   if(smoothJoin){
+     const u=clamp((t-smoothJoin.start)/1450,0,1),f=1-easing(u);
+     fold+=smoothJoin.fold*f;yaw+=smoothJoin.yaw*f;pitch+=smoothJoin.pitch*f;zoom+=smoothJoin.zoom*f;
+     updateAngle();if(u===1)smoothJoin=null;
+   }
+   if(demoTime>=totalTime-1e-6){pause();}
+ }
+ if(dirty){renderScene();dirty=false;}
+ requestAnimationFrame(tick);
+}
+ui('playBtn').onclick=togglePlay;
+ui('prevBtn').onclick=()=>{pause();seekTo(starts[Math.max(0,index-1)]);buttonState();};
+ui('nextBtn').onclick=()=>{pause();seekTo(starts[Math.min(13,index+1)]);buttonState();};
+ui('restartBtn').onclick=()=>{pause();userGhost=false;userAxes=false;userAux=false;userNormals=false;syncToggle();seekTo(0);buttonState();};
+ui('speedSel').onchange=e=>{speed=Number(e.target.value)};
+ui('demoSeek').addEventListener('input',e=>{pause();seekTo((+e.target.value)/1000*totalTime);buttonState();});
+ui('foldSlider').addEventListener('input',e=>setFold(+e.target.value,true));
+ui('targetBtn').onclick=()=>{setFold(120,true);toast('定位成功：转动 120°，内二面角 60°')};
+ui('ghostBtn').onclick=()=>{userGhost=!userGhost;syncToggle();dirty=true;};
+ui('axesBtn').onclick=()=>{userAxes=!userAxes;syncToggle();dirty=true;};
+ui('auxBtn').onclick=()=>{userAux=!userAux;syncToggle();dirty=true;};
+ui('normBtn').onclick=()=>{userNormals=!userNormals;syncToggle();dirty=true;};
+ui('viewResetBtn').onclick=()=>{pause();yaw=-1.03;pitch=.45;zoom=1;dirty=true;};
+ui('originalBtn').onclick=()=>ui('originalModal').classList.add('open');
+ui('closeModal').onclick=()=>ui('originalModal').classList.remove('open');
+ui('originalModal').addEventListener('click',e=>{if(e.target===ui('originalModal'))ui('originalModal').classList.remove('open')});
+document.querySelectorAll('[data-tab]').forEach(el=>el.addEventListener('click',()=>{
+ pause();let i=steps.findIndex(s=>s.tab===el.dataset.tab);seekTo(starts[i]);buttonState();
+}));
+ui('roadmap').addEventListener('click',e=>{let b=e.target.closest('[data-step]');if(b){pause();seekTo(starts[+b.dataset.step]);buttonState();}});
+ui('lessonBody').addEventListener('click',e=>{
+ const btn=e.target.closest('button[data-quiz]');if(!btn)return;
+ const id=btn.dataset.quiz,correct=+btn.dataset.correct,chosen=+btn.dataset.i;
+ const all=ui('lessonBody').querySelectorAll('[data-quiz="'+id+'"]');
+ all.forEach(b=>b.classList.remove('chosen','correct','wrong'));
+ btn.classList.add('chosen',chosen===correct?'correct':'wrong');
+ const fb=ui('fb-'+id);if(!fb.dataset.base)fb.dataset.base=fb.innerHTML;
+ fb.classList.add('show');fb.textContent=(chosen===correct?'✓ 回答正确。':'再想一想。正确答案是第 '+(correct+1)+' 项。')+' '+fb.dataset.base;
+});
+const canvasWrap=ui('sceneWrap');
+canvasWrap.addEventListener('pointerdown',e=>{
+ if(e.button!==0&&e.pointerType==='mouse')return;pause();
+ drag={id:e.pointerId,x:e.clientX,y:e.clientY};canvasWrap.setPointerCapture(e.pointerId);
+});
+canvasWrap.addEventListener('pointermove',e=>{
+ if(!drag||drag.id!==e.pointerId)return;
+ const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag.x=e.clientX;drag.y=e.clientY;
+ yaw+=dx*.0075;pitch=clamp(pitch-dy*.0075,-1.38,1.38);dirty=true;
+});
+canvasWrap.addEventListener('pointerup',()=>drag=null);canvasWrap.addEventListener('pointercancel',()=>drag=null);
+canvasWrap.addEventListener('wheel',e=>{e.preventDefault();pause();zoom=clamp(zoom*Math.exp(-e.deltaY*.001),.58,2.1);dirty=true;},{passive:false});
+canvasWrap.addEventListener('dblclick',()=>{pause();yaw=-1.03;pitch=.45;zoom=1;dirty=true;});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape')ui('originalModal').classList.remove('open');
+ if(e.target.matches('input,button,select'))return;
+ if(e.key==='ArrowRight'){pause();seekTo(starts[Math.min(13,index+1)]);buttonState();}
+ if(e.key==='ArrowLeft'){pause();seekTo(starts[Math.max(0,index-1)]);buttonState();}
+ if(e.key===' '){e.preventDefault();togglePlay();}
+});
+window.addEventListener('resize',resize);
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing)pause();});
+// 数据与计算一致性自检：在题设目标处对边长、垂直与最终角度进行数值检验。
+(function verify(){let E=P.E,F=P.F,B=P.B,C=P.C,A=[0,.5,sq/2],D=[1,.5,sq/2],n1=[0,sq,-1],n2=[sq,sq,1];const eq=(x,y)=>Math.abs(x-y)<1e-9;const c=Math.abs(dot(n1,n2)/(norm(n1)*norm(n2)));const s=Math.sqrt(1-c*c);const ok=eq(norm(v(E,F)),1)&&eq(norm(v(E,B)),2)&&eq(norm(v(A,E)),1)&&eq(norm(v(C,F)),1)&&eq(norm(v(D,F)),1)&&eq(dot(n1,v(F,E)),0)&&eq(dot(n1,v(A,E)),0)&&eq(dot(n2,v(C,B)),0)&&eq(dot(n2,v(D,B)),0)&&eq(s,Math.sqrt(42)/7);if(!ok)console.error('几何数据验证失败');})();
+setStep(0);resize();seekTo(0);buttonState();requestAnimationFrame(tick);
+window.__demoTest={get:()=>({demoTime,playing,index,fold,yaw,pitch,zoom,totalTime,visibility:{...visibility}}),seek:t=>{pause();seekTo(t);buttonState();},play:()=>{if(!playing)togglePlay();},pause:()=>pause()};
+</script>
+</body>
+</html>
